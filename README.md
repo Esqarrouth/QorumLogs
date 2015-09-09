@@ -5,7 +5,9 @@ Lightweight Swift Logging Utility for Xcode & Google Docs
 
 - Autocomplete friendly: Easy 2 letter typing to start logging something
 
-Like this:                                      Not like this:
+Like this: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not like this:
+
+
 
 ![demo](http://i.imgur.com/XEqB5Tg.gif)    ![demo](http://i.imgur.com/8x5T0mx.gif)
 
