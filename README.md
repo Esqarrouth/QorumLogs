@@ -26,6 +26,9 @@ This framework was created while working on the [Qorum app](http://www.joinqorum
 - iOS 7  (Tested on 7.1)
 
 ###Thanks
+- [XcodeColors](https://github.com/robbiehanson/XcodeColors)
+
+
 
 
 ###License
