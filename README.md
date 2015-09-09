@@ -1,6 +1,8 @@
 # QorumLogs
 Lightweight Swift Logging Utility for Xcode & Google Docs
 
+#Not finished yet..
+
 ###Features:
 
 - Autocomplete friendly: Easy 2 letter typing to start logging something
@@ -11,29 +13,43 @@ Like this: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 
 - Different log levels with different colors
 
-![demo](http://i.imgur.com/Jt415aM.png)
+![demo](http://i.imgur.com/UNarzUa.png)
+
+- One line config to hide all logs from all other classes
+
+![demo](http://i.imgur.com/FfnNC1V.png)
 
 
 
+![demo](http://i.imgur.com/BxqvGS0.png)
 
-while debugging shows colored and informational logs with log levels in xcode debug area
 
-while on release logs the critical stuff you have to your google docs
+- Show errors in debug console while debugging, show error on Google Docs while on production by changing 1 line
+```swift
+  QorumOnlineLogs.enabled = true
+```
+![demo](http://i.imgur.com/TtYAHfW.png)
 
-you can ignore all other logs and show only the class you are debugging with just one line of code
+- Easily tell the difference between system logs and your logs 
 
-its pretty
+System logs are white after all, yours are not :)
 
-easy to install ~2 minutes
+- This framework was created while working on the [Qorum app](http://www.joinqorum.com/). Check it out, you might like it.
 
-you can easily tell the difference between system logs and your logs
+###Easy to Install (~2 minutes)
 
-This framework was created while working on the [Qorum app](http://www.joinqorum.com/). Check it out, you might like it.
+1. 
+2. If you don't have [Qorum app](https://github.com/supermarin/Alcatraz) or [XcodeColors](https://github.com/robbiehanson/XcodeColors) installed, we are going to install them.
+Open up your terminal and paste this:
+``` bash
+curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
+```
+3. Restart Xcode after the installation.
+4. Alcatraz requires Xcode Command Line Tools, which can be installed in Xcode > Preferences > Downloads. (You might not need this)
+5. colors, copy paste, google docs, test
+6. 
 
-###Installing
-
-https://github.com/supermarin/Alcatraz
-
+###Easy to Use
 
 ###Requirements
 
@@ -42,6 +58,9 @@ https://github.com/supermarin/Alcatraz
 
 ###Possible future features
 
+- Colors for white Xcode
+- Device information to Google Docs
+- Google Docs shows in order
 
 ###Thanks for making this possible
 - [XcodeColors](https://github.com/robbiehanson/XcodeColors)
