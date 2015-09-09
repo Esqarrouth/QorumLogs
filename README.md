@@ -18,16 +18,13 @@ easy to install ~2 minutes
 
 you can easily tell the difference between system logs and your logs
 
-Requirements
+###Requirements
 
-Xcode 4.4 or later is required
-iOS 5 or later
-OS X 10.7 or later
-for OS X < 10.7 support, use the 1.6.0 version
+- Xcode 6 or later (Tested on 6.4)
+- iOS 7  (Tested on 8)
 
-#Thanks
+###Thanks
 
 
-#License
-
-QorumLogs is available under the MIT license. See the [LICENSE file](https://github.com/goktugyil/QorumLogs/blob/master/LICENSE).
+###License
+- QorumLogs is available under the MIT license. See the [LICENSE file](https://github.com/goktugyil/QorumLogs/blob/master/LICENSE).
