@@ -3,8 +3,10 @@ Lightweight Swift Logging Utility for Xcode & Google Docs
 
 ###Features:
 
-- Easy 3 letter typing to log something (no log.this("") type of bs)
-![demo](http://www.gfycat.com/SoupyObeseGermanpinscher)
+- Autocomplete friendly: Easy 2 letter typing to start logging something
+
+![demo](http://i.imgur.com/XEqB5Tg.gif)  Not like this:  ![demo](http://i.imgur.com/2d0wgsb.gif)
+
 
 
 while debugging shows colored and informational logs with log levels in xcode debug area
