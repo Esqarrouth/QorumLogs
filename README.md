@@ -1,6 +1,7 @@
 # QorumLogs
 Lightweight Swift Logging Utility for Xcode & Google Docs
 
+https://github.com/supermarin/Alcatraz
 
 features:
 
@@ -25,10 +26,12 @@ This framework was created while working on the [Qorum app](http://www.joinqorum
 - Xcode 6 or later (Tested on 6.4)
 - iOS 7  (Tested on 7.1)
 
-###Thanks
+###Possible future features
+
+
+###Thanks for making this possible
 - [XcodeColors](https://github.com/robbiehanson/XcodeColors)
-
-
+- [Magic](https://github.com/ArtSabintsev/Magic)
 
 
 ###License
