@@ -1,11 +1,10 @@
 # QorumLogs
 Lightweight Swift Logging Utility for Xcode & Google Docs
 
-https://github.com/supermarin/Alcatraz
+###Features:
 
-features:
-
-easy 3 letter typing to log something (no log.this("") type of bs)
+- Easy 3 letter typing to log something (no log.this("") type of bs)
+[LICENSE file](http://www.gfycat.com/SoupyObeseGermanpinscher).
 
 while debugging shows colored and informational logs with log levels in xcode debug area
 
@@ -21,10 +20,15 @@ you can easily tell the difference between system logs and your logs
 
 This framework was created while working on the [Qorum app](http://www.joinqorum.com/). Check it out, you might like it.
 
+###Installing
+
+https://github.com/supermarin/Alcatraz
+
+
 ###Requirements
 
 - Xcode 6 or later (Tested on 6.4)
-- iOS 7  (Tested on 7.1)
+- iOS 7 or later (Tested on 7.1)
 
 ###Possible future features
 
@@ -36,3 +40,8 @@ This framework was created while working on the [Qorum app](http://www.joinqorum
 
 ###License
 - QorumLogs is available under the MIT license. See the [LICENSE file](https://github.com/goktugyil/QorumLogs/blob/master/LICENSE).
+
+###Keywords
+Debugging, logging, remote logging, remote debugging, qorum app,  
+
+
