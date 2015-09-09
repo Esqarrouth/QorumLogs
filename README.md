@@ -18,10 +18,12 @@ easy to install ~2 minutes
 
 you can easily tell the difference between system logs and your logs
 
+This framework was created while working on the [Qorum app](http://www.joinqorum.com/). Check it out, you might like it.
+
 ###Requirements
 
 - Xcode 6 or later (Tested on 6.4)
-- iOS 7  (Tested on 8)
+- iOS 7  (Tested on 7.1)
 
 ###Thanks
 
