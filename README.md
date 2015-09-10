@@ -3,7 +3,7 @@ Lightweight Swift Logging Utility for Xcode & Google Docs
 
 #Not finished yet..
 
-###Features
+###Features:
 
 ####Autocomplete Friendly: Type 2 Letters
 
@@ -109,7 +109,7 @@ Here is the public demo sheet: https://docs.google.com/spreadsheets/d/1rYRStyI46
 
 Congratulations!
 </br></br>
-###Easy to Use
+###Detailed Features:
 
 ####Log Levels
 
@@ -131,15 +131,27 @@ You need to write the file name, you can send it like a string and also directly
   QorumLogs.onlyShowThisClass("MyAwesomeViewController")
 ```
 
+####Print Lines
+```swift
+  QLPlusLine()
+  QL2Info("Text between line")
+  QLShortLine()
+```
+![demo](http://i.imgur.com/hQWOYit.png)
 
-
-        
-
+####OnlineLogs - User Information
+```swift
+   QorumOnlineLogs.extraInformation["userId"] = "sfkoFvvbKgr"
+   QorumOnlineLogs.extraInformation["name"] = "Will Smith"
+   QL1Debug("Will is awesome!")
+   QL5Severe("Will rules!")
+```
+![demo](http://i.imgur.com/5xoVRrY.png)
 
 ###Requirements
 
-- Xcode6 or later (Tested on 6.4)
-- iOS7 or later (Tested on 7.1)
+- Xcode 6 or later (Tested on 6.4)
+- iOS 7 or later (Tested on 7.1)
 
 ###Possible future features
 
@@ -157,5 +169,3 @@ You need to write the file name, you can send it like a string and also directly
 
 ###Keywords
 Debugging, logging, remote logging, remote debugging, qorum app,  
-
-
