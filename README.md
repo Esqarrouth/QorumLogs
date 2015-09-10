@@ -68,18 +68,18 @@ Congratulations!
 </br></br>
 ###Google Docs Support Install (Optional, ~2 minutes)
 
-1. Open Google Drive, click New > More > Google Forms. http://i.imgur.com/f3tJNTS.png
+1. Open [Google Drive](https://drive.google.com/), click New > More > Google Forms. http://i.imgur.com/f3tJNTS.png
 2. Enter a title to your form form top left corner
 3. The first field Question Title should be "App Version" and Question Type should be "Text" http://i.imgur.com/799xH6D.png
 4. Click Done. Add 3 more items like this, their texts should be "User Information", "Code Information", "Log Text". 
-5. Be sure it looks something like this at the end: http://i.imgur.com/uTFVSMu.png
+5. Be sure it looks something like this at the end: http://i.imgur.com/uTFVSMu.png 
 6. Click "View Live Form", https://docs.google.com/forms/d/19MbGnGA54cj9nobK5FxvRNcXJ-Gtudb_xSA3VChzSxU/viewform a link like this opens up. Use link as the first paramater in your code like this:
   
   ```swift
 QorumOnlineLogs.setupOnlineLogs(formLink: "https://docs.google.com/forms/d/19MbGnGA54cj9nobK5FxvRNcXJ-Gtudb_xSA3VChzSxU/formResponse", 
 versionField: <#String#>, userInfoField: <#String#>, methodInfoField: <#String#>, textField: <#String#>)
   ```
-With one difference, change "viewform" with "formResponse".
+With one difference: change "viewform" to "formResponse".
 
 7. Go back to your live form, under App Version, select the text field, right click and select "Inspect Element" (I am using Chrome, might be different in your browser) 
 8. Get the value of "id" from that text fields HTML. http://i.imgur.com/eZKlzjq.png
@@ -107,7 +107,7 @@ versionField: "entry_631576183", userInfoField: "entry_922538006", methodInfoFie
 
 ![demo](http://i.imgur.com/DLzZmfl.png)
 
-and this in your responses:
+and this in your form responses:
 
 ![demo](http://i.imgur.com/LJmc13G.png)
 
@@ -128,6 +128,7 @@ Sets the minimum log level that is seen in the debug area:
 5. Severe - Serious error, likely to crash now
 ```swift
   QorumLogs.logLevel = 1
+  QorumOnlineLogs.logLevel = 3 // Its a good idea to have OnlineLog level a bit higher
 ```
 
 ####Hide Other Classes
