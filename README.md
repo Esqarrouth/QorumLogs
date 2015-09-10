@@ -28,6 +28,7 @@ Lightweight Swift Logging Utility for Xcode & Google Docs
 
 ####Google Docs Support:
 ```swift
+  QorumLogs.enabled = true
   QorumOnlineLogs.enabled = true
 ```
 ![demo](http://i.imgur.com/TtYAHfW.png)
@@ -99,17 +100,46 @@ versionField: "entry_631576183", userInfoField: "entry_922538006", methodInfoFie
 13. Run your application, you should see this in the Xcode debugger:
 
 ![demo](http://i.imgur.com/DLzZmfl.png)
+
 and this in your responses:
+
 ![demo](http://i.imgur.com/LJmc13G.png)
 
-Congratulations!
+Here is the public demo sheet: https://docs.google.com/spreadsheets/d/1rYRStyI46L2sjiFF9DTDMlCb2qR2FMtKrZk3USRdXkA/
 
+Congratulations!
+</br></br>
 ###Easy to Use
+
+####Log Levels
+
+Sets the minimum log level that is seen in the debug area:
+1. Debug - Detailed logs only used while debugging
+2. Info - General information about app state
+3. Warning - Indicates possible error
+4. Error - En unexpected error occured, its recoverable
+5. Severe - Serious error, likely to crash now
+```swift
+  QorumLogs.logLevel = 1
+```
+
+####Hide Other Classes
+
+You need to write the file name, you can send it like a string and also directly the class.
+```swift
+  QorumLogs.onlyShowThisClass(MyAwesomeViewController)
+  QorumLogs.onlyShowThisClass("MyAwesomeViewController")
+```
+
+
+
+        
+
 
 ###Requirements
 
-- Xcode 6 or later (Tested on 6.4)
-- iOS 7 or later (Tested on 7.1)
+- Xcode6 or later (Tested on 6.4)
+- iOS7 or later (Tested on 7.1)
 
 ###Possible future features
 
