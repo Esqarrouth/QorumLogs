@@ -25,23 +25,24 @@ class MyAwesomeViewController: UIViewController {
 
 ![demo](http://i.imgur.com/SzxTXyv.png)
 
+<br><br><br>
 ####Works for both night mode and lightmode
 
 ![demo](http://i.imgur.com/Zq4yUM6.png)
-
+<br><br><br>
 ####Autocomplete Friendly: Type 2 Letters
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like this: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not like this:
 
 ![demo](http://i.imgur.com/XEqB5Tg.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![demo](http://i.imgur.com/8x5T0mx.gif)
-
+<br><br><br>
 ####Hiding Other Logs:
 ```swift
   QorumLogs.onlyShowThisFile(NewClass)
 ```
 
 ![demo](http://i.imgur.com/ofnsOGA.png)
-
+<br><br><br>
 ####Google Docs Support:
 
 You can send all your logs to googledocs with only 1 line of extra code.
@@ -51,10 +52,9 @@ You can send all your logs to googledocs with only 1 line of extra code.
 ```
 ![demo](http://i.imgur.com/TtYAHfW.png)
 </br></br></br></br>
-
+<br><br><br>
 ####Spot System Logs:
-
-- System logs are white (or black) after all, yours are not :)
+System logs are white (or black) after all, yours are not :)
 
 ![demo](http://i.imgur.com/rJKInKk.png)
 
