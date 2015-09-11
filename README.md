@@ -5,7 +5,7 @@ Lightweight Swift Logging Utility for Xcode & Google Docs
 
 ###Features:
 
-####Friendly Autocomplete: Type 2 Letters
+####Autocomplete Friendly: Type 2 Letters
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like this: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not like this:
 
@@ -15,16 +15,16 @@ Lightweight Swift Logging Utility for Xcode & Google Docs
 
 ####Log Levels
 
+Maybe write the code here?
+
 ![demo](http://i.imgur.com/WR5C9mB.png)
 </br></br></br></br>
 
 ####Hiding Other Logs:
-
-![demo](http://i.imgur.com/350Xexj.png)
-
 ```swift
   QorumLogs.onlyShowThisClass(NewClass)
 ```
+![demo](http://i.imgur.com/350Xexj.png)
 </br></br></br></br>
 
 ####Google Docs Support:
@@ -46,7 +46,7 @@ This framework was created while working on the [Qorum app (Hacker News For iOS 
 ###Installation (~2 minutes)
 
 1. Download and drop 'QorumLogs.swift' in your project. (Cocoapods forces you to import the framework in everyline. If anyone has a solution or workaround, inform me please)
-2. If you don't have [Alcatraz](https://github.com/supermarin/Alcatraz) or [XcodeColors](https://github.com/robbiehanson/XcodeColors) installed, install them.
+2. If you don't have [Alcatraz](https://github.com/supermarin/Alcatraz) or [XcodeColors](https://github.com/robbiehanson/XcodeColors) installed, lets install them.
 Open up your terminal and paste this:
 
   ``` bash
