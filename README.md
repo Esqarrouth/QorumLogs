@@ -2,6 +2,8 @@ QorumLogs
 ==========
 Lightweight Swift Logging Utility in Xcode & Google Docs
 
+Created while working on the [Qorum app (Hacker News For iOS Startups)](http://www.joinqorum.com/).		
+
 ##Log Levels
 
 ```swift
@@ -30,11 +32,10 @@ class MyAwesomeViewController: UIViewController {
 <br><br><br>
 ##Autocomplete Friendly: Type 2 Letters
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like this: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not like this:
-
-![demo](http://i.imgur.com/XEqB5Tg.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![demo](http://i.imgur.com/8x5T0mx.gif)
+-![demo](http://i.imgur.com/XEqB5Tg.gif)
 <br><br><br>
-##Hiding Other Logs:
+##Filter Class Specific Logs:
+Add this line where QorumLogs is initiliazed.
 ```swift
   QorumLogs.onlyShowThisFile(NewClass)
 ```
@@ -49,14 +50,12 @@ You can send all your logs to googledocs with only 1 line of extra code.
   QorumOnlineLogs.enabled = true
 ```
 ![demo](http://i.imgur.com/TtYAHfW.png)
-</br></br></br></br>
+
 <br><br><br>
 ##Spot System Logs:
 System logs are white (or black) after all, yours are not :)
 
 ![demo](http://i.imgur.com/rJKInKk.png)
-
-This framework was created while working on the [Qorum app (Hacker News For iOS Startups)](http://www.joinqorum.com/). Check it out, you might like it.
 
 ##Installation (~2 minutes)
 
@@ -135,9 +134,9 @@ You do not need the extension of the file.
 ![demo](http://i.imgur.com/5xoVRrY.png)
 
 You only need to set the extraInformation one time.
-####FAQ
+##FAQ
 
-## How to delete rows inside google docs?
+#### How to delete rows inside google docs?
 Unfortunately you can't just select the rows inside Google Docs and delete them. You need to select the rows where there are row numbers, then right click, then press delete click "Delete rows x-y" http://i.imgur.com/0XyAAbD.png
 
 ##Requirements
@@ -145,7 +144,7 @@ Unfortunately you can't just select the rows inside Google Docs and delete them.
 - Xcode 6 or later (Tested on 6.4)
 - iOS 7 or later (Tested on 7.1)
 
-##Possible future features
+##Possible features
 
 - Different colors for white and black Xcode themes
 - Easily editable colors
@@ -159,7 +158,7 @@ Unfortunately you can't just select the rows inside Google Docs and delete them.
 
 
 ##License
-- QorumLogs is available under the MIT license. See the [LICENSE file](https://github.com/goktugyil/QorumLogs/blob/master/LICENSE).
+QorumLogs is available under the MIT license. See the [LICENSE file](https://github.com/goktugyil/QorumLogs/blob/master/LICENSE).
 
 ##Keywords
-Debugging, logging, remote logging, remote debugging, qorum app,  
+Debugging, logging, remote logging, remote debugging, qorum app, swift log
