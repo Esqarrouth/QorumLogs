@@ -1,7 +1,13 @@
 # QorumLogs
 Lightweight Swift Logging Utility in Xcode & Google Docs
 
+###Works for both night mode and lightmode
+
+![demo](http://i.imgur.com/Zq4yUM6.png)
+
 #Not finished yet..
+
+
 
 ###Features:
 
@@ -24,7 +30,7 @@ class MyAwesomeViewController: UIViewController {
 ```
 
 
-![demo](http://i.imgur.com/WR5C9mB.png)
+![demo](http://i.imgur.com/SzxTXyv.png)
 </br></br></br></br>
 
 ####Autocomplete Friendly: Type 2 Letters
@@ -40,7 +46,7 @@ class MyAwesomeViewController: UIViewController {
   QorumLogs.onlyShowThisFile(NewClass)
 ```
 
-![demo](http://i.imgur.com/350Xexj.png)
+![demo](http://i.imgur.com/ofnsOGA.png)
 </br></br></br></br>
 
 ####Google Docs Support:
