@@ -1,5 +1,5 @@
 # QorumLogs
-Lightweight Swift Logging Utility for Xcode & Google Docs
+Lightweight Swift Logging Utility in Xcode & Google Docs
 
 #Not finished yet..
 
@@ -86,7 +86,7 @@ curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh 
 
 Congratulations!
 </br></br>
-###Google Docs Support Install (Optional, ~2 minutes)
+###Google Docs As Database Setup (Optional, ~4 minutes)
 
 1. Open [Google Drive](https://drive.google.com/), click New > More > Google Forms. http://i.imgur.com/f3tJNTS.png
 2. Enter a title to your form form top left corner
@@ -147,25 +147,28 @@ Sets the minimum log level that is seen in the debug area:
 1. Debug - Detailed logs only used while debugging
 2. Info - General information about app state
 3. Warning - Indicates possible error
-4. Error - En unexpected error occured, its recoverable
+4. Error - An unexpected error occured, its recoverable
 5. Severe - Serious error, likely to crash now
 ```swift
-  QorumLogs.logLevel = 2
-  QorumOnlineLogs.logLevel = 4 // Its a good idea to have OnlineLog level a bit higher
+  QorumLogs.minimumLogLevelShown = 2
+  QorumOnlineLogs.minimumLogLevelShown = 4 // Its a good idea to have OnlineLog level a bit higher
   QL1Debug("mylog") // Doesn't show this level anywhere, because minimum level is 2
   QL2Info("mylog")  // Shows this only in debugger
   QL3Warning("mylog") // Shows this only in debugger
   QL4Error("mylog") // Shows this in debugger and online logs
   QL5Severe("mylog") // Shows this in debugger and online logs
 ```
+QL.. methods can print in both Debugger and Google Docs, depending on which is active.
 
 ####Hide Other Classes
 
-You need to write the name of the actual file, you can do this by a string and also directly the class name can be appropiate if it is the same as the file name.
+You need to write the name of the actual file, you can do this by a string and also directly the class name can be appropriate if it is the same as the file name. 
 ```swift
   QorumLogs.onlyShowThisClass(MyAwesomeViewController)
   QorumLogs.onlyShowThisClass("MyAwesomeViewController")
 ```
+
+You do not need the extension of the file.
 
 ####Print Lines
 ```swift
@@ -183,6 +186,8 @@ You need to write the name of the actual file, you can do this by a string and a
    QL5Severe("Will rules!")
 ```
 ![demo](http://i.imgur.com/5xoVRrY.png)
+
+You only need to set the extraInformation one time.
 
 ####OnlineLogs - Delete Information
 Unfortunately you can't just select the rows inside Google Docs and delete them. You need to select the rows where there are row numbers, then right click, then press delete click "Delete rows x-y" http://i.imgur.com/0XyAAbD.png
