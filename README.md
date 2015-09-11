@@ -103,7 +103,7 @@ With one difference: change "viewform" to "formResponse".
 
 7. Go back to your live form, under App Version, select the text field, right click and select "Inspect Element" (I am using Chrome, might be different in your browser) 
 
-![demo](http://i.imgur.com/KvMBISU.png)
+    ![demo](http://i.imgur.com/KvMBISU.png)
 
 8. Get the value of "id" from that text fields HTML. http://i.imgur.com/eZKlzjq.png
 9. Use that as the second parameter in your code:
