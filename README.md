@@ -38,7 +38,7 @@ class MyAwesomeViewController: UIViewController {
 
 ####Hiding Other Logs:
 ```swift
-  QorumLogs.onlyShowThisClass(NewClass)
+  QorumLogs.onlyShowThisFile(NewClass)
 ```
 Maybe write the code in the middle of pics?
 
@@ -166,8 +166,8 @@ QL methods can print in both Debugger and Google Docs, depending on which is act
 
 You need to write the name of the actual file, you can do this by a string and also directly the class name can be appropriate if it is the same as the file name. 
 ```swift
-  QorumLogs.onlyShowThisClass(MyAwesomeViewController)
-  QorumLogs.onlyShowThisClass("MyAwesomeViewController")
+  QorumLogs.onlyShowThisFile(MyAwesomeViewController)
+  QorumLogs.onlyShowThisFile("MyAwesomeViewController")
 ```
 
 You do not need the extension of the file.
