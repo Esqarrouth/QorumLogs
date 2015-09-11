@@ -146,8 +146,13 @@ Sets the minimum log level that is seen in the debug area:
 4. Error - En unexpected error occured, its recoverable
 5. Severe - Serious error, likely to crash now
 ```swift
-  QorumLogs.logLevel = 1
-  QorumOnlineLogs.logLevel = 3 // Its a good idea to have OnlineLog level a bit higher
+  QorumLogs.logLevel = 2
+  QorumOnlineLogs.logLevel = 4 // Its a good idea to have OnlineLog level a bit higher
+  QL1Debug("mylog") // Doesn't show this level anywhere, because minimum level is 2
+  QL2Info("mylog")  // Shows this only in debugger
+  QL3Warning("mylog") // Shows this only in debugger
+  QL4Error("mylog") // Shows this in debugger and online logs
+  QL5Severe("mylog") // Shows this in debugger and online logs
 ```
 
 ####Hide Other Classes
