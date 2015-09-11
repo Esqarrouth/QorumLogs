@@ -175,6 +175,9 @@ You need to write the name of the actual file, you can do this by a string and a
 ```
 ![demo](http://i.imgur.com/5xoVRrY.png)
 
+####OnlineLogs - Delete Information
+Unfortunately you can't just select the rows inside Google Docs and delete them. You need to select the rows where there are row numbers, then right click, then press delete click "Delete rows x-y" http://i.imgur.com/0XyAAbD.png
+
 ###Requirements
 
 - Xcode 6 or later (Tested on 6.4)
