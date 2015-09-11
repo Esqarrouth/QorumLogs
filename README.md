@@ -2,7 +2,7 @@ QorumLogs
 ==========
 Lightweight Swift Logging Utility in Xcode & Google Docs
 
-Created while working on the [Qorum app (Hacker News For iOS Startups)](http://www.joinqorum.com/).		
+Created while working on [Qorum app (Hacker News For iOS Startups)](http://www.joinqorum.com/).		
 
 ##Log Levels
 
@@ -81,7 +81,8 @@ curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh 
 ![demo](http://i.imgur.com/xMRrgv2.png)
 
 Congratulations!
-####Log Storage in GoogleDocs (Optional, ~4 minutes)
+
+##Log Storage in GoogleDocs (Optional, ~4 minutes)
 [Learn to integrate GoogleDocs](./Log To GoogleDocs.md)
 
 ##Detailed Features:
