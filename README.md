@@ -40,7 +40,7 @@ Add this line where QorumLogs is initiliazed.
   QorumLogs.onlyShowThisFile(NewClass)
 ```
 
-![demo](http://i.imgur.com/ofnsOGA.png)
+![demo](http://i.imgur.com/K7OWqBw.gif)
 <br><br><br>
 ##Google Docs Support:
 
