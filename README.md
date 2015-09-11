@@ -77,6 +77,7 @@ curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh 
 7. In your AppDelegate or anywhere else enter this:
  
   ```swift
+  QorumLogs.enabled = true
   QorumLogs.test()
   ```
 8. You will see something this:
@@ -101,6 +102,9 @@ versionField: <#String#>, userInfoField: <#String#>, methodInfoField: <#String#>
 With one difference: change "viewform" to "formResponse".
 
 7. Go back to your live form, under App Version, select the text field, right click and select "Inspect Element" (I am using Chrome, might be different in your browser) 
+
+![demo](http://i.imgur.com/KvMBISU.png)
+
 8. Get the value of "id" from that text fields HTML. http://i.imgur.com/eZKlzjq.png
 9. Use that as the second parameter in your code:
 
