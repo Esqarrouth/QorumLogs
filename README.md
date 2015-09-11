@@ -15,7 +15,23 @@ Lightweight Swift Logging Utility for Xcode & Google Docs
 
 ####Log Levels
 
-Maybe write the code here?
+Maybe write the code here like this?
+```swift
+class MyAwesomeViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        QL1Debug("Debug")
+        QL2Info("Info")
+        QL3Warning("Warning")
+        awesomeFunction()
+    }
+    func awesomeFunction() {
+        QL4Error("Error")
+        QL5Severe("Severe")
+    }
+}
+```
+
 
 ![demo](http://i.imgur.com/WR5C9mB.png)
 </br></br></br></br>
@@ -24,6 +40,8 @@ Maybe write the code here?
 ```swift
   QorumLogs.onlyShowThisClass(NewClass)
 ```
+Maybe write the code in the middle of pics?
+
 ![demo](http://i.imgur.com/350Xexj.png)
 </br></br></br></br>
 
@@ -37,7 +55,7 @@ Maybe write the code here?
 
 ####Spot System Logs:
 
-- System logs are white after all, yours are not :)
+- System logs are white (or black) after all, yours are not :)
 
 </br></br></br></br>
 
