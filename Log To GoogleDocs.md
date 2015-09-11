@@ -1,5 +1,5 @@
-####Log Storage in GoogleDocs (Optional, ~4 minutes)
-
+Log Storage in GoogleDocs
+==========
 1. Open [Google Drive](https://drive.google.com/), click New > More > Google Forms. http://i.imgur.com/f3tJNTS.png
 2. Enter a title to your form from the top left corner
 3. The first field Question Title should be "App Version" and Question Type should be "Text" http://i.imgur.com/799xH6D.png
