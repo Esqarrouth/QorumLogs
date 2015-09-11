@@ -5,17 +5,8 @@ Lightweight Swift Logging Utility in Xcode & Google Docs
 
 ###Features:
 
-####Autocomplete Friendly: Type 2 Letters
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like this: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not like this:
-
-![demo](http://i.imgur.com/XEqB5Tg.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![demo](http://i.imgur.com/8x5T0mx.gif)
-
-</br></br></br></br>
-
 ####Log Levels
 
-Maybe write the code here like this?
 ```swift
 class MyAwesomeViewController: UIViewController {
     override func viewDidLoad() {
@@ -36,16 +27,25 @@ class MyAwesomeViewController: UIViewController {
 ![demo](http://i.imgur.com/WR5C9mB.png)
 </br></br></br></br>
 
+####Autocomplete Friendly: Type 2 Letters
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like this: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not like this:
+
+![demo](http://i.imgur.com/XEqB5Tg.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![demo](http://i.imgur.com/8x5T0mx.gif)
+
+</br></br></br></br>
+
 ####Hiding Other Logs:
 ```swift
   QorumLogs.onlyShowThisFile(NewClass)
 ```
-Maybe write the code in the middle of pics?
 
 ![demo](http://i.imgur.com/350Xexj.png)
 </br></br></br></br>
 
 ####Google Docs Support:
+
+You can send all your logs to googledocs with only 1 line of extra code.
 ```swift
   QorumLogs.enabled = false
   QorumOnlineLogs.enabled = true
@@ -88,10 +88,10 @@ curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh 
 
 Congratulations!
 </br></br>
-###Google Docs As Database Setup (Optional, ~4 minutes)
+###Log Storage in GoogleDocs (Optional, ~4 minutes)
 
 1. Open [Google Drive](https://drive.google.com/), click New > More > Google Forms. http://i.imgur.com/f3tJNTS.png
-2. Enter a title to your form form top left corner
+2. Enter a title to your form from the top left corner
 3. The first field Question Title should be "App Version" and Question Type should be "Text" http://i.imgur.com/799xH6D.png
 4. Click Done. Add 3 more items like this, their texts should be "User Information", "Code Information", "Log Text". 
 5. Be sure it looks something like this at the end: http://i.imgur.com/uTFVSMu.png 
@@ -164,7 +164,7 @@ QL methods can print in both Debugger and Google Docs, depending on which is act
 
 ####Hide Other Classes
 
-You need to write the name of the actual file, you can do this by a string and also directly the class name can be appropriate if it is the same as the file name. 
+You need to write the name of the actual file, you can do this by a string and also directly the class name can be appropriate if it is the same as the file name. Add the following code where you setup QorumLogs
 ```swift
   QorumLogs.onlyShowThisFile(MyAwesomeViewController)
   QorumLogs.onlyShowThisFile("MyAwesomeViewController")
@@ -190,8 +190,9 @@ You do not need the extension of the file.
 ![demo](http://i.imgur.com/5xoVRrY.png)
 
 You only need to set the extraInformation one time.
+###FAQ
 
-####OnlineLogs - Delete Information
+# How to delete rows inside google docs?
 Unfortunately you can't just select the rows inside Google Docs and delete them. You need to select the rows where there are row numbers, then right click, then press delete click "Delete rows x-y" http://i.imgur.com/0XyAAbD.png
 
 ###Requirements
