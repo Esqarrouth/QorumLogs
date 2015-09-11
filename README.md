@@ -57,10 +57,12 @@ Maybe write the code in the middle of pics?
 
 - System logs are white (or black) after all, yours are not :)
 
+![demo](http://i.imgur.com/rJKInKk.png)
+
 </br></br></br></br>
 
 This framework was created while working on the [Qorum app (Hacker News For iOS Startups)](http://www.joinqorum.com/). Check it out, you might like it.
-
+</br></br>
 ###Installation (~2 minutes)
 
 1. Download and drop 'QorumLogs.swift' in your project. (Cocoapods forces you to import the framework in everyline. If anyone has a solution or workaround, inform me please)
@@ -158,7 +160,7 @@ Sets the minimum log level that is seen in the debug area:
   QL4Error("mylog") // Shows this in debugger and online logs
   QL5Severe("mylog") // Shows this in debugger and online logs
 ```
-QL.. methods can print in both Debugger and Google Docs, depending on which is active.
+QL methods can print in both Debugger and Google Docs, depending on which is active.
 
 ####Hide Other Classes
 
