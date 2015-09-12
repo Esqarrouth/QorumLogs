@@ -20,7 +20,8 @@ With one difference: change "viewform" to "formResponse".
 
     ![demo](http://i.imgur.com/KvMBISU.png)
 
-8. Get the value of "id" from that text fields HTML. http://i.imgur.com/eZKlzjq.png
+8. Get the value of "id" from that text fields HTML. 
+![](http://i.imgur.com/eZKlzjq.png)
 9. Use that as the second parameter in your code:
 
   ```swift
