@@ -34,8 +34,8 @@ class MyAwesomeViewController: UIViewController {
 
 -![demo](http://i.imgur.com/XEqB5Tg.gif)
 <br><br><br>
-##Filter Class Specific Logs:
-Add this line where QorumLogs is initiliazed.
+##Filter File Specific Logs:
+Paste this where QorumLogs is initiliazed:
 ```swift
   QorumLogs.onlyShowThisFile(NewClass)
 ```
@@ -44,7 +44,7 @@ Add this line where QorumLogs is initiliazed.
 <br><br><br>
 ##Google Docs Support:
 
-You can send all your logs to googledocs with only 1 line of extra code.
+In production, send all your logs to Google Docs with only 1 line of extra code.
 ```swift
   QorumLogs.enabled = false
   QorumOnlineLogs.enabled = true
