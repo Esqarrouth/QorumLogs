@@ -1,6 +1,6 @@
 QorumLogs
 ==========
-Lightweight Swift Logging Utility in Xcode & Google Docs
+Swift Logging Utility in Xcode & Google Docs
 
 Created while working on [Qorum app (Hacker News For iOS Startups)](http://www.joinqorum.com/).		
 
