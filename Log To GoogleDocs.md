@@ -3,12 +3,12 @@ Log Storage in GoogleDocs
 1. Open [Google Drive](https://drive.google.com/), click New > More > Google Forms.
 ![](http://i.imgur.com/f3tJNTS.png)
 2. Enter a title to your form from the top left corner
-3. The first field Question Title should be "App Version" and Question Type should be "Text" 
+3. The first field which is "Question Title" should be "App Version" and "Question Type" should be "Text" 
 ![](http://i.imgur.com/799xH6D.png)
-4. Click Done. Add 3 more items like this, their texts should be "User Information", "Code Information", "Log Text". 
+4. Click Done. Add 3 more questions like this, their texts should be "User Information", "Code Information", "Log Text". 
 5. Be sure it looks something like this at the end: 
 ![](http://i.imgur.com/uTFVSMu.png)
-6. Click "View Live Form", https://docs.google.com/forms/d/19MbGnGA54cj9nobK5FxvRNcXJ-Gtudb_xSA3VChzSxU/viewform a link like this opens up. Use link as the first paramater in your code like this:
+6. Click "View Live Form", https://docs.google.com/forms/d/19MbGnGA54cj9nobK5FxvRNcXJ-Gtudb_xSA3VChzSxU/viewform a link like this ofpens up. Use link as the first paramater in your code like this:
   
   ```swift
 QorumOnlineLogs.setupOnlineLogs(formLink: "https://docs.google.com/forms/d/19MbGnGA54cj9nobK5FxvRNcXJ-Gtudb_xSA3VChzSxU/formResponse", 
