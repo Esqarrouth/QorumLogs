@@ -121,7 +121,6 @@ struct QorumOnlineLogs {
     //==========================================================================================================
     
     private static func sendError<T>(#classInformation: String, textObject: T, level: String) {
-        //            Flurry.logError(className + "-" + errorName, message: errorContext, error: nil)
         var text = ""
         if let stringObject = textObject as? String {
             text = stringObject
@@ -278,7 +277,7 @@ private struct ColorLog {
     static func lightGreen<T>(object:T) -> String {
         return "\(ESCAPE)fg0,180,180;\(object)\(RESET)"
     }
-    //0 255 255
+
     static func green<T>(object:T) -> String {
         return "\(ESCAPE)fg0,150,0;\(object)\(RESET)"
     }
