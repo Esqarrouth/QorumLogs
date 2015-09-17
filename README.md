@@ -163,4 +163,4 @@ Unfortunately you can't just select the rows inside Google Docs and delete them.
 QorumLogs is available under the MIT license. See the [LICENSE file](https://github.com/goktugyil/QorumLogs/blob/master/LICENSE).
 
 ##Keywords
-Debugging, logging, remote logging, remote debugging, qorum app, swift log, library, framework, tool
+Debugging, logging, remote logging, remote debugging, qorum app, swift log, library, framework, tool, google docs, google drive, google forms
