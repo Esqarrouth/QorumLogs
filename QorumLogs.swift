@@ -24,19 +24,19 @@ struct QorumLogs {
         minimumLogLevelShown = 1
         if let name = fileName as? String {
             showFile = name
-            println(ColorLog.purple("QorumDebug: Only Showing: \(name)"))
+            print(ColorLog.purple("QorumDebug: Only Showing: \(name)"))
             return
         }
 
         var classString = ""
         if let obj: AnyObject = fileName as? AnyObject {
-            classString = toString(obj.dynamicType)
+            classString = String(obj.dynamicType)
         } else {
-            classString = toString(fileName)
+            classString = String(fileName)
         }
-        var classStringWithoutPrefix = classString.pathExtension
+        let classStringWithoutPrefix = classString.ns.pathExtension
         showFile = classStringWithoutPrefix
-        println(ColorLog.purple("QorumLogs: Only Showing: \(classStringWithoutPrefix)"))
+        print(ColorLog.purple("QorumLogs: Only Showing: \(classStringWithoutPrefix)"))
     }
     
     /// Test to see if its working
@@ -55,7 +55,7 @@ struct QorumLogs {
     // MARK: - Private Methods
     //==========================================================================================================
 
-    private static func shouldPrintLine(#level: Int, fileName: String) -> Bool {
+    private static func shouldPrintLine(level level: Int, fileName: String) -> Bool {
         if !QorumLogs.enabled {
             return false
         } else if QorumLogs.minimumLogLevelShown <= level {
@@ -76,7 +76,6 @@ struct QorumLogs {
 }
 
 struct QorumOnlineLogs {
-
     private static let appVersion = UIApplication.versionAndBuild()
     private static var googleFormLink: String!
     private static var googleFormAppVersionField: String!
@@ -107,7 +106,7 @@ struct QorumOnlineLogs {
     }
     
     /// Setup Google Form links
-    static func setupOnlineLogs(#formLink: String, versionField: String, userInfoField: String, methodInfoField: String, textField: String) {
+    static func setupOnlineLogs(formLink formLink: String, versionField: String, userInfoField: String, methodInfoField: String, textField: String) {
         googleFormLink = formLink
         googleFormAppVersionField = versionField
         googleFormUserInfoField = userInfoField
@@ -120,30 +119,30 @@ struct QorumOnlineLogs {
     // MARK: - Private Methods
     //==========================================================================================================
     
-    private static func sendError<T>(#classInformation: String, textObject: T, level: String) {
+    private static func sendError<T>(classInformation classInformation: String, textObject: T, level: String) {
         var text = ""
         if let stringObject = textObject as? String {
             text = stringObject
         }
-        var versionLevel = (appVersion + " - " + level)
+        let versionLevel = (appVersion + " - " + level)
         
-        var url = NSURL(string: googleFormLink)
+        let url = NSURL(string: googleFormLink)
         var postData = googleFormAppVersionField + "=" + versionLevel
         postData += "&" + googleFormUserInfoField + "=" + extraInformation.description
         postData += "&" + googleFormMethodInfoField + "=" + classInformation
         postData += "&" + googleFormErrorTextField + "=" + text
         
-        var request = NSMutableURLRequest(URL: url!)
+        let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
-        var connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
+        NSURLConnection(request: request, delegate: nil, startImmediately: true)
         
-        var printText = "OnlineLogs: \(extraInformation.description) - \(versionLevel) - \(classInformation) - \(text)"
-        print(" \(ColorLog.purple(printText))\n")
+        let printText = "OnlineLogs: \(extraInformation.description) - \(versionLevel) - \(classInformation) - \(text)"
+        print(" \(ColorLog.purple(printText))\n", terminator: "")
     }
     
-    private static func shouldSendLine(#level: Int, fileName: String) -> Bool {
+    private static func shouldSendLine(level level: Int, fileName: String) -> Bool {
         if !QorumOnlineLogs.enabled {
             return false
         } else if QorumOnlineLogs.minimumLogLevelShown <= level {
@@ -167,13 +166,13 @@ struct QorumOnlineLogs {
 func QL1Debug<T>(object: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 1
     let levelText = "1Debug"
-    let filename = file.lastPathComponent.stringByDeletingPathExtension
+    let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart))
-        print(" \(ColorLog.lightGreen(object))\n")
+        let informationPart = "\(filename).\(function)[\(line)]:"
+        print(ColorLog.infoColor(informationPart), terminator: "")
+        print(" \(ColorLog.lightGreen(object))\n", terminator: "")
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
-        var informationPart = "()\(filename).\(function)[\(line)]"
+        let informationPart = "()\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: object, level: levelText)
     }
 }
@@ -182,13 +181,13 @@ func QL1Debug<T>(object: T, _ file: String = __FILE__, _ function: String = __FU
 func QL2Info<T>(object: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 2
     let levelText = "2Info"
-    let filename = file.lastPathComponent.stringByDeletingPathExtension
+    let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart))
-        print(" \(ColorLog.green(object))\n")
+        let informationPart = "\(filename).\(function)[\(line)]:"
+        print(ColorLog.infoColor(informationPart), terminator: "")
+        print(" \(ColorLog.green(object))\n", terminator: "")
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]"
+        let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: object, level: levelText)
     }
 }
@@ -197,13 +196,13 @@ func QL2Info<T>(object: T, _ file: String = __FILE__, _ function: String = __FUN
 func QL3Warning<T>(object: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 3
     let levelText = "3Warning"
-    let filename = file.lastPathComponent.stringByDeletingPathExtension
+    let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart))
-        print(" \(ColorLog.yellow(object))\n")
+        let informationPart = "\(filename).\(function)[\(line)]:"
+        print(ColorLog.infoColor(informationPart), terminator: "")
+        print(" \(ColorLog.yellow(object))\n", terminator: "")
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]"
+        let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: object, level: levelText)
     }
 }
@@ -212,13 +211,13 @@ func QL3Warning<T>(object: T, _ file: String = __FILE__, _ function: String = __
 func QL4Error<T>(object: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 4
     let levelText = "4Error"
-    let filename = file.lastPathComponent.stringByDeletingPathExtension
+    let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart))
-        print(" \(ColorLog.orange(object))\n")
+        let informationPart = "\(filename).\(function)[\(line)]:"
+        print(ColorLog.infoColor(informationPart), terminator: "")
+        print(" \(ColorLog.orange(object))\n", terminator: "")
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]"
+        let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: object, level: levelText)
     }
 }
@@ -227,36 +226,36 @@ func QL4Error<T>(object: T, _ file: String = __FILE__, _ function: String = __FU
 func QL5Severe<T>(object: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 5
     let levelText = "5Severe"
-    let filename = file.lastPathComponent.stringByDeletingPathExtension
+    let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart))
-        print(" \(ColorLog.red(object))\n")
+        let informationPart = "\(filename).\(function)[\(line)]:"
+        print(ColorLog.infoColor(informationPart), terminator: "")
+        print(" \(ColorLog.red(object))\n", terminator: "")
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
-        var informationPart = "\(filename).\(function)[\(line)]"
+        let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: object, level: levelText)
     }
 }
 
 ///=====
-func QLShortLine(_ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
-    let filename = file.lastPathComponent.stringByDeletingPathExtension
+func QLShortLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+    let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let lineString = "====================================="
-        var informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart))
-        print(" \(ColorLog.purple(lineString))\n")
+        let informationPart = "\(filename).\(function)[\(line)]:"
+        print(ColorLog.infoColor(informationPart), terminator: "")
+        print(" \(ColorLog.purple(lineString))\n", terminator: "")
     }
 }
 
 ///+++++
-func QLPlusLine(_ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
-    let filename = file.lastPathComponent.stringByDeletingPathExtension
+func QLPlusLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+    let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let lineString = "+++++++++++++++++++++++++++++++++++++"
-        var informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart))
-        print(" \(ColorLog.purple(lineString))\n")
+        let informationPart = "\(filename).\(function)[\(line)]:"
+        print(ColorLog.infoColor(informationPart), terminator: "")
+        print(" \(ColorLog.purple(lineString))\n", terminator: "")
     }
 }
 
@@ -277,7 +276,7 @@ private struct ColorLog {
     static func lightGreen<T>(object:T) -> String {
         return "\(ESCAPE)fg0,180,180;\(object)\(RESET)"
     }
-
+    //0 255 255
     static func green<T>(object:T) -> String {
         return "\(ESCAPE)fg0,150,0;\(object)\(RESET)"
     }
@@ -302,5 +301,12 @@ private extension UIApplication {
         let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
         let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
         return version == build ? "v\(version)" : "v\(version)(\(build))"
+    }
+}
+
+private extension String {
+    /// Qorum Extension
+    var ns: NSString {
+        return self as NSString
     }
 }
