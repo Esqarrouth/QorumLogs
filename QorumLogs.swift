@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Goktug Yilmaz. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct QorumLogs {
     /// While enabled QorumOnlineLogs does not work
@@ -76,7 +76,7 @@ struct QorumLogs {
 }
 
 struct QorumOnlineLogs {
-    private static let appVersion = UIApplication.versionAndBuild()
+    private static let appVersion = versionAndBuild()
     private static var googleFormLink: String!
     private static var googleFormAppVersionField: String!
     private static var googleFormUserInfoField: String!
@@ -295,15 +295,16 @@ private struct ColorLog {
     
 }
 
-private extension UIApplication {
-    /// Qorum Extension
-    class func versionAndBuild() -> String {
-        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
-        let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
-        return version == build ? "v\(version)" : "v\(version)(\(build))"
-    }
+private func versionAndBuild() -> String {
+    let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+    let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
+    return version == build ? "v\(version)" : "v\(version)(\(build))"
 }
-
+private func versionAndBuild() -> String {
+    let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+    let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
+    return version == build ? "v\(version)" : "v\(version)(\(build))"
+}
 private extension String {
     /// Qorum Extension
     var ns: NSString {
