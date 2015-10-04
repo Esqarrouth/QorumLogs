@@ -300,11 +300,7 @@ private func versionAndBuild() -> String {
     let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
     return version == build ? "v\(version)" : "v\(version)(\(build))"
 }
-private func versionAndBuild() -> String {
-    let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
-    let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
-    return version == build ? "v\(version)" : "v\(version)(\(build))"
-}
+
 private extension String {
     /// Qorum Extension
     var ns: NSString {
