@@ -136,7 +136,7 @@ struct QorumOnlineLogs {
         request.HTTPMethod = "POST"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
-        NSURLConnection(request: request, delegate: nil, startImmediately: true)
+        NSURLConnection(request: request, delegate: nil)?.start()
         
         let printText = "OnlineLogs: \(extraInformation.description) - \(versionLevel) - \(classInformation) - \(text)"
         print(" \(ColorLog.purple(printText))\n", terminator: "")
