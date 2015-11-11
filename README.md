@@ -2,22 +2,19 @@ QorumLogs
 ==========
 Swift Logging Utility in Xcode & Google Docs
 
-Created while working on [Qorum app (Hacker News For iOS Startups)](http://www.joinqorum.com/).		
-
 ##Log Levels
 
 ```swift
 class MyAwesomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        QL1Debug("Debug")
-        QL2Info("Info")
-        QL3Warning("Warning")
+        QL1("Debug")
+        QL2("Info")
+        QL3("Warning")
         awesomeFunction()
     }
     func awesomeFunction() {
-        QL4Error("Error")
-        QL5Severe("Severe")
+        QL4("Error")
     }
 }
 ```
@@ -32,7 +29,7 @@ class MyAwesomeViewController: UIViewController {
 <br><br><br>
 ##Autocomplete Friendly: Type 2 Letters
 
--![demo](http://i.imgur.com/XEqB5Tg.gif)
+-![demo](http://i.imgur.com/3gPJHaY.gif)
 <br><br><br>
 ##Filter File Specific Logs:
 Paste this where QorumLogs is initiliazed:
@@ -95,15 +92,13 @@ Sets the minimum log level that is seen in the debug area:
 2. Info - General information about app state
 3. Warning - Indicates possible error
 4. Error - An unexpected error occured, its recoverable
-5. Severe - Serious error, likely to crash now
 ```swift
   QorumLogs.minimumLogLevelShown = 2
   QorumOnlineLogs.minimumLogLevelShown = 4 // Its a good idea to have OnlineLog level a bit higher
-  QL1Debug("mylog") // Doesn't show this level anywhere, because minimum level is 2
-  QL2Info("mylog")  // Shows this only in debugger
-  QL3Warning("mylog") // Shows this only in debugger
-  QL4Error("mylog") // Shows this in debugger and online logs
-  QL5Severe("mylog") // Shows this in debugger and online logs
+  QL1("mylog") // Doesn't show this level anywhere, because minimum level is 2
+  QL2("mylog")  // Shows this only in debugger
+  QL3("mylog") // Shows this only in debugger
+  QL4("mylog") // Shows this in debugger and online logs
 ```
 QL methods can print in both Debugger and Google Docs, depending on which is active.
 
@@ -120,7 +115,7 @@ You do not need the extension of the file.
 ####Print Lines
 ```swift
   QLPlusLine()
-  QL2Info("Text between line")
+  QL2("Text between line")
   QLShortLine()
 ```
 ![demo](http://i.imgur.com/hQWOYit.png)
@@ -129,8 +124,8 @@ You do not need the extension of the file.
 ```swift
    QorumOnlineLogs.extraInformation["userId"] = "sfkoFvvbKgr"
    QorumOnlineLogs.extraInformation["name"] = "Will Smith"
-   QL1Debug("Will is awesome!")
-   QL5Severe("Will rules!")
+   QL1("Will is awesome!")
+   QL5("Will rules!")
 ```
 ![demo](http://i.imgur.com/5xoVRrY.png)
 
