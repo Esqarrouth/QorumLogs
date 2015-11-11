@@ -120,6 +120,14 @@ You do not need the extension of the file.
 ```
 ![demo](http://i.imgur.com/hQWOYit.png)
 
+####Add Custom Colors
+```swift
+    QorumLogs.colorsForLogLevels[0] = UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1)
+    QorumLogs.colorsForLogLevels[1] = UIColor(red: 255/255, green: 20/255, blue: 147/255, alpha: 1)
+    QL1("Mylog")
+```
+![demo](http://i.imgur.com/yTmNnU6.png)
+
 ####OnlineLogs - User Information
 ```swift
    QorumOnlineLogs.extraInformation["userId"] = "sfkoFvvbKgr"
