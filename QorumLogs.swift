@@ -13,8 +13,16 @@ struct QorumLogs {
     static var enabled = false
     /// 1 to 4
     static var minimumLogLevelShown = 1
+    /// Change the array element with another UIColor. 0 is info gray, 5 is purple, rest are log levels
+    static var colorsForLogLevels: [UIColor] = [
+        UIColor(redC: 120, greenC: 120, blueC: 120), //0
+        UIColor(redC: 0, greenC: 180, blueC: 180),  //1
+        UIColor(redC: 0, greenC: 150, blueC: 0),  //2
+        UIColor(redC: 255, greenC: 190, blueC: 0), //3
+        UIColor(redC: 255, greenC: 0, blueC: 0),   //4
+        UIColor(redC: 160, greenC: 32, blueC: 240)] //5
     private static var showFile: String?
-    
+
     //==========================================================================================================
     // MARK: - Public Methods
     //==========================================================================================================
@@ -24,7 +32,7 @@ struct QorumLogs {
         minimumLogLevelShown = 1
         if let name = fileName as? String {
             showFile = name
-            print(ColorLog.purple("QorumDebug: Only Showing: \(name)"))
+            print(ColorLog.colorizeString("QorumLogs: Only Showing: \(name)", colorId: 5))
             return
         }
 
@@ -36,7 +44,7 @@ struct QorumLogs {
         }
         let classStringWithoutPrefix = classString.ns.pathExtension
         showFile = classStringWithoutPrefix
-        print(ColorLog.purple("QorumLogs: Only Showing: \(classStringWithoutPrefix)"))
+        print(ColorLog.colorizeString("QorumLogs: Only Showing: \(classStringWithoutPrefix)", colorId: 5))
     }
     
     /// Test to see if its working
@@ -136,7 +144,7 @@ struct QorumOnlineLogs {
         NSURLConnection(request: request, delegate: nil)?.start()
         
         let printText = "OnlineLogs: \(extraInformation.description) - \(versionLevel) - \(classInformation) - \(text)"
-        print(" \(ColorLog.purple(printText))\n", terminator: "")
+        print(" \(ColorLog.colorizeString(printText, colorId: 5))\n", terminator: "")
     }
     
     private static func shouldSendLine(level level: Int, fileName: String) -> Bool {
@@ -166,8 +174,7 @@ func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __FUNCTION
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart), terminator: "")
-        print(" \(ColorLog.lightGreen(debug))\n", terminator: "")
+        printLog(informationPart, text: debug, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "()\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: debug, level: levelText)
@@ -181,8 +188,7 @@ func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FUNCTION_
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart), terminator: "")
-        print(" \(ColorLog.green(info))\n", terminator: "")
+        printLog(informationPart, text: info, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: info, level: levelText)
@@ -196,8 +202,7 @@ func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = __FUNCTI
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart), terminator: "")
-        print(" \(ColorLog.yellow(warning))\n", terminator: "")
+        printLog(informationPart, text: warning, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: warning, level: levelText)
@@ -211,12 +216,16 @@ func QL4<T>(error: T, _ file: String = __FILE__, _ function: String = __FUNCTION
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart), terminator: "")
-        print(" \(ColorLog.red(error))\n", terminator: "")
+        printLog(informationPart, text: error, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: error, level: levelText)
     }
+}
+
+private func printLog<T>(informationPart: String, text: T, level: Int) {
+    print(" \(ColorLog.colorizeString(informationPart, colorId: 0))", terminator: "")
+    print(" \(ColorLog.colorizeString(text, colorId: level))\n", terminator: "")
 }
 
 ///=====
@@ -225,8 +234,7 @@ func QLShortLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ l
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let lineString = "====================================="
         let informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart), terminator: "")
-        print(" \(ColorLog.purple(lineString))\n", terminator: "")
+        printLog(informationPart, text: lineString, level: 5)
     }
 }
 
@@ -236,8 +244,7 @@ func QLPlusLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ li
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let lineString = "+++++++++++++++++++++++++++++++++++++"
         let informationPart = "\(filename).\(function)[\(line)]:"
-        print(ColorLog.infoColor(informationPart), terminator: "")
-        print(" \(ColorLog.purple(lineString))\n", terminator: "")
+        printLog(informationPart, text: lineString, level: 5)
     }
 }
 
@@ -247,34 +254,9 @@ private struct ColorLog {
     private static let RESET_BG = ESCAPE + "bg;" // Clear any background color
     private static let RESET = ESCAPE + ";"      // Clear any foreground or background color
     
-    static func infoColor<T>(object:T) -> String {
-        return "\(ESCAPE)fg120,120,120;\(object)\(RESET)"
+    static func colorizeString<T>(object: T, colorId: Int) -> String {
+        return "\(ESCAPE)fg\(QorumLogs.colorsForLogLevels[colorId].redC),\(QorumLogs.colorsForLogLevels[colorId].greenC),\(QorumLogs.colorsForLogLevels[colorId].blueC);\(object)\(RESET)"
     }
-    
-    static func purple<T>(object:T) -> String {
-        return "\(ESCAPE)fg160,32,240;\(object)\(RESET)"
-    }
-    
-    static func lightGreen<T>(object:T) -> String {
-        return "\(ESCAPE)fg0,180,180;\(object)\(RESET)"
-    }
-    //0 255 255
-    static func green<T>(object:T) -> String {
-        return "\(ESCAPE)fg0,150,0;\(object)\(RESET)"
-    }
-    
-    static func yellow<T>(object:T) -> String {
-        return "\(ESCAPE)fg255,190,0;\(object)\(RESET)"
-    }
-    
-//    static func orange<T>(object:T) -> String {
-//        return "\(ESCAPE)fg255,128,0;\(object)\(RESET)"
-//    }
-    
-    static func red<T>(object:T) -> String {
-        return "\(ESCAPE)fg255,0,0;\(object)\(RESET)"
-    }
-    
 }
 
 private func versionAndBuild() -> String {
@@ -287,5 +269,26 @@ private extension String {
     /// Qorum Extension
     var ns: NSString {
         return self as NSString
+    }
+}
+
+private extension UIColor {
+    convenience init(redC: CGFloat, greenC: CGFloat, blueC: CGFloat) {
+        self.init(red: redC / 255.0, green: greenC / 255.0, blue: blueC / 255.0, alpha: 1)
+    }
+    var redC: Int {
+        var r: CGFloat = 0
+        getRed(&r, green: nil, blue: nil, alpha: nil)
+        return Int(r * 255)
+    }
+    var greenC: Int {
+        var g: CGFloat = 0
+        getRed(nil, green: &g, blue: nil, alpha: nil)
+        return Int(g * 255)
+    }
+    var blueC: Int {
+        var b: CGFloat = 0
+        getRed(nil, green: nil, blue: &b, alpha: nil)
+        return Int(b * 255)
     }
 }
