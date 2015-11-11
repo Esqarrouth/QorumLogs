@@ -8,6 +8,12 @@
 
 import Foundation
 
+#if os(OSX)
+    import Cocoa //TODO: Check if this works on OSX apps, maybe use NSColor?
+#elseif os(iOS)
+    import UIKit
+#endif
+
 struct QorumLogs {
     /// While enabled QorumOnlineLogs does not work
     static var enabled = false
