@@ -54,26 +54,45 @@ System logs are white (or black) after all, yours are not :)
 
 ![demo](http://i.imgur.com/rJKInKk.png)
 
-##Installation (~2 minutes)
+##Installation
 
-1. Download and drop 'QorumLogs.swift' in your project. (Cocoapods forces you to import the framework in everyline. If anyone has a solution or workaround, inform me please)
-2. If you don't have [Alcatraz](https://github.com/supermarin/Alcatraz) or [XcodeColors](https://github.com/robbiehanson/XcodeColors) installed, lets install them.
+### Prerequisites
+
+1. If you don't have [Alcatraz](https://github.com/supermarin/Alcatraz) or [XcodeColors](https://github.com/robbiehanson/XcodeColors) installed, lets install them.
 Open up your terminal and paste this:
 
   ``` bash
 curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
    ```
-3. Restart Xcode after the installation
-4. Alcatraz requires Xcode Command Line Tools, which can be installed in Xcode > Preferences > Downloads. (You might not need this in the latest Xcode version)
-5. In Xcode click Window > Package Manager, type in 'XcodeColors' in the search bar. Click Install.
-6. Restart Xcode after the installation
-7. In your AppDelegate or anywhere else enter this:
+2. Restart Xcode after the installation
+3. Alcatraz requires Xcode Command Line Tools, which can be installed in Xcode > Preferences > Downloads. (You might not need this in the latest Xcode version)
+4. In Xcode click Window > Package Manager, type in 'XcodeColors' in the search bar. Click Install.
+5. Restart Xcode after the installation
+
+### Install via CocoaPods
+
+You can use [Cocoapods](http://cocoapods.org/) to install `QorumLogs` by adding it to your `Podfile`:
+```ruby
+platform :ios, '8.0'
+use_frameworks!
+
+pod  'QorumLogs'
+```
+
+(Cocoapods forces you to import the framework in everyline. If anyone has a solution or workaround, inform me please)
+
+### Install Manually
+
+Download and drop 'QorumLogs.swift' in your project.
+
+### Check Installation Works Correctly
+1. In your AppDelegate or anywhere else enter this: (If Cocoapods you must add `import QorumLogs`)
  
   ```swift
   QorumLogs.enabled = true
   QorumLogs.test()
   ```
-8. You will see something this:
+2. You will see something this:
 
 ![demo](http://i.imgur.com/xMRrgv2.png)
 
