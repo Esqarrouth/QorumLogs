@@ -14,13 +14,13 @@ import Foundation
     import UIKit
 #endif
 
-struct QorumLogs {
+public struct QorumLogs {
     /// While enabled QorumOnlineLogs does not work
-    static var enabled = false
+    public static var enabled = false
     /// 1 to 4
-    static var minimumLogLevelShown = 1
+    public static var minimumLogLevelShown = 1
     /// Change the array element with another UIColor. 0 is info gray, 5 is purple, rest are log levels
-    static var colorsForLogLevels: [UIColor] = [
+    public static var colorsForLogLevels: [UIColor] = [
         UIColor(redC: 120, greenC: 120, blueC: 120), //0
         UIColor(redC: 0, greenC: 180, blueC: 180),  //1
         UIColor(redC: 0, greenC: 150, blueC: 0),  //2
@@ -32,9 +32,9 @@ struct QorumLogs {
     //==========================================================================================================
     // MARK: - Public Methods
     //==========================================================================================================
- 
+
     /// Ignores all logs from other files
-    static func onlyShowThisFile<T>(fileName: T) {
+    public static func onlyShowThisFile<T>(fileName: T) {
         minimumLogLevelShown = 1
         if let name = fileName as? String {
             showFile = name
@@ -52,9 +52,9 @@ struct QorumLogs {
         showFile = classStringWithoutPrefix
         print(ColorLog.colorizeString("QorumLogs: Only Showing: \(classStringWithoutPrefix)", colorId: 5))
     }
-    
+
     /// Test to see if its working
-    static func test() {
+    public static func test() {
         let oldDebugLevel = minimumLogLevelShown
         minimumLogLevelShown = 1
         QL1("Debug")
@@ -63,7 +63,7 @@ struct QorumLogs {
         QL4("Error")
         minimumLogLevelShown = oldDebugLevel
     }
-    
+
     //==========================================================================================================
     // MARK: - Private Methods
     //==========================================================================================================
@@ -85,10 +85,10 @@ struct QorumLogs {
             return false
         }
     }
-    
+
 }
 
-struct QorumOnlineLogs {
+public struct QorumOnlineLogs {
     private static let appVersion = versionAndBuild()
     private static var googleFormLink: String!
     private static var googleFormAppVersionField: String!
@@ -96,18 +96,18 @@ struct QorumOnlineLogs {
     private static var googleFormMethodInfoField: String!
     private static var googleFormErrorTextField: String!
     /// Online logs does not work while QorumLogs is enabled
-    static var enabled = false
+    public static var enabled = false
     /// 1 to 4
-    static var minimumLogLevelShown = 1
+    public static var minimumLogLevelShown = 1
     /// Empty dictionary, add extra info like user id, username here
-    static var extraInformation = [String: String]()
-    
+    public static var extraInformation = [String: String]()
+
     //==========================================================================================================
     // MARK: - Public Methods
     //==========================================================================================================
-    
+
     /// Test to see if its working
-    static func test() {
+    public static func test() {
         let oldDebugLevel = minimumLogLevelShown
         minimumLogLevelShown = 1
         QL1("Debug")
@@ -116,43 +116,43 @@ struct QorumOnlineLogs {
         QL4("Error")
         minimumLogLevelShown = oldDebugLevel
     }
-    
+
     /// Setup Google Form links
-    static func setupOnlineLogs(formLink formLink: String, versionField: String, userInfoField: String, methodInfoField: String, textField: String) {
+    public static func setupOnlineLogs(formLink formLink: String, versionField: String, userInfoField: String, methodInfoField: String, textField: String) {
         googleFormLink = formLink
         googleFormAppVersionField = versionField
         googleFormUserInfoField = userInfoField
         googleFormMethodInfoField = methodInfoField
         googleFormErrorTextField = textField
     }
-    
+
     //==========================================================================================================
     // MARK: - Private Methods
     //==========================================================================================================
-    
+
     private static func sendError<T>(classInformation classInformation: String, textObject: T, level: String) {
         var text = ""
         if let stringObject = textObject as? String {
             text = stringObject
         }
         let versionLevel = (appVersion + " - " + level)
-        
+
         let url = NSURL(string: googleFormLink)
         var postData = googleFormAppVersionField + "=" + versionLevel
         postData += "&" + googleFormUserInfoField + "=" + extraInformation.description
         postData += "&" + googleFormMethodInfoField + "=" + classInformation
         postData += "&" + googleFormErrorTextField + "=" + text
-        
+
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
         NSURLConnection(request: request, delegate: nil)?.start()
-        
+
         let printText = "OnlineLogs: \(extraInformation.description) - \(versionLevel) - \(classInformation) - \(text)"
         print(" \(ColorLog.colorizeString(printText, colorId: 5))\n", terminator: "")
     }
-    
+
     private static func shouldSendLine(level level: Int, fileName: String) -> Bool {
         if !QorumOnlineLogs.enabled {
             return false
@@ -170,11 +170,11 @@ struct QorumOnlineLogs {
             return false
         }
     }
-    
+
 }
 
 ///Detailed logs only used while debugging
-func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 1
     let levelText = "1Debug"
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
@@ -188,7 +188,7 @@ func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __FUNCTION
 }
 
 ///General information about app state
-func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 2
     let levelText = "2Info"
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
@@ -202,7 +202,7 @@ func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FUNCTION_
 }
 
 ///Indicates possible error
-func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 3
     let levelText = "3Warning"
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
@@ -216,7 +216,7 @@ func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = __FUNCTI
 }
 
 ///En unexpected error occured
-func QL4<T>(error: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QL4<T>(error: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 4
     let levelText = "4Error"
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
@@ -235,7 +235,7 @@ private func printLog<T>(informationPart: String, text: T, level: Int) {
 }
 
 ///=====
-func QLShortLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QLShortLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let lineString = "====================================="
@@ -245,7 +245,7 @@ func QLShortLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ l
 }
 
 ///+++++
-func QLPlusLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QLPlusLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let lineString = "+++++++++++++++++++++++++++++++++++++"
@@ -259,7 +259,7 @@ private struct ColorLog {
     private static let RESET_FG = ESCAPE + "fg;" // Clear any foreground color
     private static let RESET_BG = ESCAPE + "bg;" // Clear any background color
     private static let RESET = ESCAPE + ";"      // Clear any foreground or background color
-    
+
     static func colorizeString<T>(object: T, colorId: Int) -> String {
         return "\(ESCAPE)fg\(QorumLogs.colorsForLogLevels[colorId].redC),\(QorumLogs.colorsForLogLevels[colorId].greenC),\(QorumLogs.colorsForLogLevels[colorId].blueC);\(object)\(RESET)"
     }
