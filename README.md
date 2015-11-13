@@ -76,10 +76,10 @@ You can use [Cocoapods](http://cocoapods.org/) to install `QorumLogs` by adding 
 platform :ios, '8.0'
 use_frameworks!
 
-pod  'QorumLogs'
+pod 'QorumLogs'
 ```
 
-(Cocoapods forces you to import the framework in everyline. If anyone has a solution or workaround, inform me please)
+(Cocoapods forces you to import the framework in every file. If anyone has a solution or workaround, inform me please)
 
 ### Install Manually
 
