@@ -157,6 +157,12 @@ You do not need the extension of the file.
 ![demo](http://i.imgur.com/5xoVRrY.png)
 
 You only need to set the extraInformation one time.
+
+#### KZLinkedConsole support:
+You need to set KZLinkedConsoleSupportEnabled flag on true (default false):
+```swift
+QorumLogs.KZLinkedConsoleSupportEnabled = true
+```
 ##FAQ
 
 #### How to delete rows inside google docs?
