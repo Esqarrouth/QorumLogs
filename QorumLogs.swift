@@ -27,6 +27,8 @@ public struct QorumLogs {
         UIColor(redC: 255, greenC: 190, blueC: 0), //3
         UIColor(redC: 255, greenC: 0, blueC: 0),   //4
         UIColor(redC: 160, greenC: 32, blueC: 240)] //5
+    /// Enable console link with KZLinkedConsole plugin
+    public static var KZLinkedConsoleSupportEnabled = false
     private static var showFile: String?
 
     //==========================================================================================================
@@ -177,9 +179,15 @@ public struct QorumOnlineLogs {
 public func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 1
     let levelText = "1Debug"
+    let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        let informationPart = "\(filename).\(function)[\(line)]:"
+        let informationPart: String
+        if QorumLogs.KZLinkedConsoleSupportEnabled {
+            informationPart = "\(filename).\(fileExtension):\(line) \(function):"
+        } else {
+            informationPart = "\(filename).\(function)[\(line)]:"
+        }
         printLog(informationPart, text: debug, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "()\(filename).\(function)[\(line)]"
@@ -191,9 +199,15 @@ public func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __F
 public func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 2
     let levelText = "2Info"
+    let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        let informationPart = "\(filename).\(function)[\(line)]:"
+        let informationPart: String
+        if QorumLogs.KZLinkedConsoleSupportEnabled {
+            informationPart = "\(filename).\(fileExtension):\(line) \(function):"
+        } else {
+            informationPart = "\(filename).\(function)[\(line)]:"
+        }
         printLog(informationPart, text: info, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
@@ -205,9 +219,15 @@ public func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FU
 public func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 3
     let levelText = "3Warning"
+    let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        let informationPart = "\(filename).\(function)[\(line)]:"
+        let informationPart: String
+        if QorumLogs.KZLinkedConsoleSupportEnabled {
+            informationPart = "\(filename).\(fileExtension):\(line) \(function):"
+        } else {
+            informationPart = "\(filename).\(function)[\(line)]:"
+        }
         printLog(informationPart, text: warning, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
@@ -219,9 +239,15 @@ public func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = _
 public func QL4<T>(error: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     let level = 4
     let levelText = "4Error"
+    let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
-        let informationPart = "\(filename).\(function)[\(line)]:"
+        let informationPart: String
+        if QorumLogs.KZLinkedConsoleSupportEnabled {
+            informationPart = "\(filename).\(fileExtension):\(line) \(function):"
+        } else {
+            informationPart = "\(filename).\(function)[\(line)]:"
+        }
         printLog(informationPart, text: error, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
@@ -236,20 +262,32 @@ private func printLog<T>(informationPart: String, text: T, level: Int) {
 
 ///=====
 public func QLShortLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+    let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let lineString = "====================================="
-        let informationPart = "\(filename).\(function)[\(line)]:"
+        let informationPart: String
+        if QorumLogs.KZLinkedConsoleSupportEnabled {
+            informationPart = "\(filename).\(fileExtension):\(line) \(function):"
+        } else {
+            informationPart = "\(filename).\(function)[\(line)]:"
+        }
         printLog(informationPart, text: lineString, level: 5)
     }
 }
 
 ///+++++
 public func QLPlusLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+    let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let lineString = "+++++++++++++++++++++++++++++++++++++"
-        let informationPart = "\(filename).\(function)[\(line)]:"
+        let informationPart: String
+        if QorumLogs.KZLinkedConsoleSupportEnabled {
+            informationPart = "\(filename).\(fileExtension):\(line) \(function):"
+        } else {
+            informationPart = "\(filename).\(function)[\(line)]:"
+        }
         printLog(informationPart, text: lineString, level: 5)
     }
 }
