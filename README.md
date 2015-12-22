@@ -159,10 +159,32 @@ You do not need the extension of the file.
 You only need to set the extraInformation one time.
 
 #### KZLinkedConsole support:
-You need to set KZLinkedConsoleSupportEnabled flag on true (default false):
+KZLinkedConsole is a plugin for Xcode which add clickable link to place in code from log was printed. For more information go to https://github.com/krzysztofzablocki/KZLinkedConsole  
+
+Set KZLinkedConsoleSupportEnabled flag on true (default false) to enable KZLinkedConsole support :
 ```swift
 QorumLogs.KZLinkedConsoleSupportEnabled = true
 ```
+
+##### WARRNIG
+KZLinkedConsoleSupportEnabled change log output from for example:
+```
+ QorumLogs.test()[60]: Debug
+ QorumLogs.test()[61]: Info
+ QorumLogs.test()[62]: Warning
+ QorumLogs.test()[63]: Error
+```
+
+to
+```
+ QorumLogs.swift:62 test(): Debug
+ QorumLogs.swift:63 test(): Info
+ QorumLogs.swift:64 test(): Warning
+ QorumLogs.swift:65 test(): Error
+```
+
+Online log stay in classic format.
+
 ##FAQ
 
 #### How to delete rows inside google docs?
