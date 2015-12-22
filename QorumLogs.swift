@@ -203,7 +203,9 @@ public func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __F
             informationPart = "\(filename).\(function)[\(line)]:"
         }
         printLog(informationPart, text: debug, level: level)
-    } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
+    }
+
+    if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: debug, level: levelText)
     }
@@ -223,7 +225,9 @@ public func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FU
             informationPart = "\(filename).\(function)[\(line)]:"
         }
         printLog(informationPart, text: info, level: level)
-    } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
+    }
+
+    if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: info, level: levelText)
     }
@@ -243,7 +247,9 @@ public func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = _
             informationPart = "\(filename).\(function)[\(line)]:"
         }
         printLog(informationPart, text: warning, level: level)
-    } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
+    }
+
+    if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: warning, level: levelText)
     }
@@ -263,7 +269,9 @@ public func QL4<T>(error: T, _ file: String = __FILE__, _ function: String = __F
             informationPart = "\(filename).\(function)[\(line)]:"
         }
         printLog(informationPart, text: error, level: level)
-    } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
+    }
+
+    if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: error, level: levelText)
     }
