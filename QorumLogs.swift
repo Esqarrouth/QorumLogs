@@ -9,9 +9,13 @@
 import Foundation
 
 #if os(OSX)
-    import Cocoa //TODO: Check if this works on OSX apps, maybe use NSColor?
+    import Cocoa
+
+    public typealias QLColor = NSColor
 #elseif os(iOS)
     import UIKit
+
+    public typealias QLColor = UIColor
 #endif
 
 public struct QorumLogs {
@@ -20,13 +24,13 @@ public struct QorumLogs {
     /// 1 to 4
     public static var minimumLogLevelShown = 1
     /// Change the array element with another UIColor. 0 is info gray, 5 is purple, rest are log levels
-    public static var colorsForLogLevels: [UIColor] = [
-        UIColor(redC: 120, greenC: 120, blueC: 120), //0
-        UIColor(redC: 0, greenC: 180, blueC: 180),  //1
-        UIColor(redC: 0, greenC: 150, blueC: 0),  //2
-        UIColor(redC: 255, greenC: 190, blueC: 0), //3
-        UIColor(redC: 255, greenC: 0, blueC: 0),   //4
-        UIColor(redC: 160, greenC: 32, blueC: 240)] //5
+    public static var colorsForLogLevels: [QLColor] = [
+        QLColor(redC: 120, greenC: 120, blueC: 120), //0
+        QLColor(redC: 0, greenC: 180, blueC: 180),  //1
+        QLColor(redC: 0, greenC: 150, blueC: 0),  //2
+        QLColor(redC: 255, greenC: 190, blueC: 0), //3
+        QLColor(redC: 255, greenC: 0, blueC: 0),   //4
+        QLColor(redC: 160, greenC: 32, blueC: 240)] //5
     /// Enable console link with KZLinkedConsole plugin
     public static var KZLinkedConsoleSupportEnabled = false
     private static var showFile: String?
@@ -149,7 +153,18 @@ public struct QorumOnlineLogs {
         request.HTTPMethod = "POST"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
+
+#if os(OSX)
+        if kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber10_10 {
+            let session = NSURLSession.sharedSession()
+            let task = session.dataTaskWithRequest(request)
+            task.resume()
+        } else {
+            NSURLConnection(request: request, delegate: nil)?.start()
+        }
+#elseif os(iOS)
         NSURLConnection(request: request, delegate: nil)?.start()
+#endif
 
         let printText = "OnlineLogs: \(extraInformation.description) - \(versionLevel) - \(classInformation) - \(text)"
         print(" \(ColorLog.colorizeString(printText, colorId: 5))\n", terminator: "")
@@ -172,7 +187,6 @@ public struct QorumOnlineLogs {
             return false
         }
     }
-
 }
 
 ///Detailed logs only used while debugging
@@ -190,7 +204,7 @@ public func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __F
         }
         printLog(informationPart, text: debug, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
-        let informationPart = "()\(filename).\(function)[\(line)]"
+        let informationPart = "\(filename).\(function)[\(line)]"
         QorumOnlineLogs.sendError(classInformation: informationPart, textObject: debug, level: levelText)
     }
 }
@@ -316,7 +330,7 @@ private extension String {
     }
 }
 
-private extension UIColor {
+private extension QLColor {
     convenience init(redC: CGFloat, greenC: CGFloat, blueC: CGFloat) {
         self.init(red: redC / 255.0, green: greenC / 255.0, blue: blueC / 255.0, alpha: 1)
     }
