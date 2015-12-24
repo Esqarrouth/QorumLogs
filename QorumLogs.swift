@@ -74,15 +74,7 @@ public struct QorumLogs {
         if !QorumLogs.enabled {
             return false
         } else if QorumLogs.minimumLogLevelShown <= level {
-            if showFile == nil {
-                return true
-            } else {
-                if showFile == fileName {
-                    return true
-                } else {
-                    return false
-                }
-            }
+            return showFile == nil || showFile == fileName
         } else {
             return false
         }
@@ -159,15 +151,7 @@ public struct QorumOnlineLogs {
         if !QorumOnlineLogs.enabled {
             return false
         } else if QorumOnlineLogs.minimumLogLevelShown <= level {
-            if QorumLogs.showFile == nil {
-                return true
-            } else {
-                if QorumLogs.showFile == fileName {
-                    return true
-                } else {
-                    return false
-                }
-            }
+            return QorumLogs.showFile == nil || QorumLogs.showFile == fileName
         } else {
             return false
         }
