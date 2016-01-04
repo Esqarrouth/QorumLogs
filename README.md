@@ -140,9 +140,26 @@ You do not need the extension of the file.
 ![demo](http://i.imgur.com/hQWOYit.png)
 
 ####Add Custom Colors
+
+For iOS:
 ```swift
     QorumLogs.colorsForLogLevels[0] = UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1)
     QorumLogs.colorsForLogLevels[1] = UIColor(red: 255/255, green: 20/255, blue: 147/255, alpha: 1)
+```
+
+For Mac:
+```swift
+    QorumLogs.colorsForLogLevels[0] = NSColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1)
+    QorumLogs.colorsForLogLevels[1] = NSColor(red: 255/255, green: 20/255, blue: 147/255, alpha: 1)
+```
+
+For Mac and iOS:
+```swift
+    QorumLogs.colorsForLogLevels[0] = QLColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1)
+    QorumLogs.colorsForLogLevels[1] = QLColor(red: 255/255, green: 20/255, blue: 147/255, alpha: 1)
+```
+
+```swift
     QL1("Mylog")
 ```
 ![demo](http://i.imgur.com/yTmNnU6.png)
