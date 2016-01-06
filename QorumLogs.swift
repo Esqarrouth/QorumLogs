@@ -12,7 +12,7 @@ import Foundation
     import Cocoa
 
     public typealias QLColor = NSColor
-#elseif os(iOS/tvOS)
+#elseif os(iOS) || os(tvOS)
     import UIKit
 
     public typealias QLColor = UIColor
