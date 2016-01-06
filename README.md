@@ -73,7 +73,7 @@ curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh 
 
 You can use [Cocoapods](http://cocoapods.org/) to install `QorumLogs` by adding it to your `Podfile`:
 ```ruby
-platform :ios, '8.0'
+platform :ios, '8.0' // platform :tvos, '9.0' (for tvOS)
 use_frameworks!
 
 pod 'QorumLogs'
@@ -141,7 +141,7 @@ You do not need the extension of the file.
 
 ####Add Custom Colors
 
-For iOS:
+For iOS/tvOS:
 ```swift
     QorumLogs.colorsForLogLevels[0] = UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1)
     QorumLogs.colorsForLogLevels[1] = UIColor(red: 255/255, green: 20/255, blue: 147/255, alpha: 1)
@@ -153,7 +153,7 @@ For Mac:
     QorumLogs.colorsForLogLevels[1] = NSColor(red: 255/255, green: 20/255, blue: 147/255, alpha: 1)
 ```
 
-For Mac and iOS:
+For Mac and iOS/tvOS:
 ```swift
     QorumLogs.colorsForLogLevels[0] = QLColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1)
     QorumLogs.colorsForLogLevels[1] = QLColor(red: 255/255, green: 20/255, blue: 147/255, alpha: 1)
@@ -211,6 +211,7 @@ Unfortunately you can't just select the rows inside Google Docs and delete them.
 
 - Xcode 6 or later (Tested on 6.4)
 - iOS 7 or later (Tested on 7.1)
+- tvOS 9 or later
 
 ##Possible features
 
