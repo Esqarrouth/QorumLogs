@@ -50,30 +50,38 @@ public struct QorumLogs {
     
     /// Enable console link with KZLinkedConsole plugin
     public static var KZLinkedConsoleSupportEnabled = false
-    private static var showFile: String?
+    private static var showFiles = [String]()
     
     //==========================================================================================================
     // MARK: - Public Methods
     //==========================================================================================================
     
     /// Ignores all logs from other files
-    public static func onlyShowThisFile<T>(fileName: T) {
+    public static func onlyShowTheseFiles(fileNames: Any...) {
         minimumLogLevelShown = 1
-        if let name = fileName as? String {
-            showFile = name
-            print(ColorLog.colorizeString("QorumLogs: Only Showing: \(name)", colorId: 5))
-            return
+        
+        let showFiles = fileNames.map {fileName in
+            return fileName as? String ?? {
+                let classString: String = {
+                    if let obj: AnyObject = fileName as? AnyObject {
+                        let classString = String(obj.dynamicType)
+                        return classString.ns.pathExtension
+                    } else {
+                        return String(fileName)
+                    }
+                }()
+                
+                return classString
+            }()
         }
         
-        var classString = ""
-        if let obj: AnyObject = fileName as? AnyObject {
-            classString = String(obj.dynamicType)
-        } else {
-            classString = String(fileName)
-        }
-        let classStringWithoutPrefix = classString.ns.pathExtension
-        showFile = classStringWithoutPrefix
-        print(ColorLog.colorizeString("QorumLogs: Only Showing: \(classStringWithoutPrefix)", colorId: 5))
+        self.showFiles = showFiles
+        print(ColorLog.colorizeString("QorumLogs: Only Showing: \(showFiles)", colorId: 5))
+    }
+    
+    /// Ignores all logs from other files
+    public static func onlyShowThisFile(fileName: Any) {
+        onlyShowTheseFiles(fileName)
     }
     
     /// Test to see if its working
@@ -95,12 +103,15 @@ public struct QorumLogs {
         if !QorumLogs.enabled {
             return false
         } else if QorumLogs.minimumLogLevelShown <= level {
-            return showFile == nil || showFile == fileName
+            return QorumLogs.shouldShowFile(fileName)
         } else {
             return false
         }
     }
     
+    private static func shouldShowFile(fileName: String) -> Bool {
+        return QorumLogs.showFiles.isEmpty || QorumLogs.showFiles.contains(fileName)
+    }
 }
 
 ///  Debug error level
@@ -198,7 +209,7 @@ public struct QorumOnlineLogs {
         if !QorumOnlineLogs.enabled {
             return false
         } else if QorumOnlineLogs.minimumLogLevelShown <= level {
-            return QorumLogs.showFile == nil || QorumLogs.showFile == fileName
+            return QorumLogs.shouldShowFile(fileName)
         } else {
             return false
         }
