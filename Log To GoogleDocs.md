@@ -3,7 +3,7 @@ Log Storage in GoogleDocs
 1. Open [Google Drive](https://drive.google.com/), click New > More > Google Forms.
 ![](http://i.imgur.com/f3tJNTS.png)
 2. Enter a title to your form from the top left corner
-3. The first field which is "Question Title" should be "App Version" and "Question Type" should be "Text" 
+3. The first field which is "Question Title" should be "App Version" and "Question Type" should be "Text" (Or "Short Answer" in new version)
 ![](http://i.imgur.com/799xH6D.png)
 4. Click Done. Add 3 more questions like this, their texts should be "User Information", "Code Information", "Log Text". 
 5. Make sure it looks like this at the end: 
@@ -22,6 +22,13 @@ With one difference: change "viewform" to "formResponse".
 
 8. Get the value of "id" from that text fields HTML.  
 ![](http://i.imgur.com/eZKlzjq.png)
+
+Edit: In new version scroll down until you see something like:
+```javascript
+<input type="hidden" name="entry.473505335" jsname="L9xHkb">
+```
+Get the contents of "name".
+
 9. Use that as the second parameter in your code:
 
   ```swift
