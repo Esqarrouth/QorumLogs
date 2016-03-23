@@ -328,7 +328,7 @@ private func versionAndBuild() -> String {
 
     let version = NSBundle.mainBundle().infoDictionary? ["CFBundleShortVersionString"] as! String
     let build = NSBundle.mainBundle().infoDictionary? [kCFBundleVersionKey as String] as! String
-    
+
     return version == build ? "v\(version)" : "v\(version)(\(build))"
 }
 
