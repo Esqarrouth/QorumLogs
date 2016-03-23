@@ -88,10 +88,10 @@ public struct QorumLogs {
     public static func test() {
         let oldDebugLevel = minimumLogLevelShown
         minimumLogLevelShown = 1
-        QL1(kLogDebug)
-        QL2(kLogInfo)
-        QL3(kLogWarning)
-        QL4(kLogError)
+        QLogDebug(kLogDebug)
+        QLogInfo(kLogInfo)
+        QLogWarning(kLogWarning)
+        QLogError(kLogError)
         minimumLogLevelShown = oldDebugLevel
     }
     
@@ -151,10 +151,10 @@ public struct QorumOnlineLogs {
     public static func test() {
         let oldDebugLevel = minimumLogLevelShown
         minimumLogLevelShown = 1
-        QL1(kLogDebug)
-        QL2(kLogInfo)
-        QL3(kLogWarning)
-        QL4(kLogError)
+        QLogDebug(kLogDebug)
+        QLogInfo(kLogInfo)
+        QLogWarning(kLogWarning)
+        QLogError(kLogError)
         minimumLogLevelShown = oldDebugLevel
     }
     
@@ -218,22 +218,22 @@ public struct QorumOnlineLogs {
 
 
 ///Detailed logs only used while debugging
-public func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QLogDebug<T>(debug: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     QLManager(debug,file: file,function: function,line: line,level:1)
 }
 
 ///General information about app state
-public func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QLogInfo<T>(info: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     QLManager(info,file: file,function: function,line: line,level:2)
 }
 
 ///Indicates possible error
-public func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QLogWarning<T>(warning: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     QLManager(warning,file: file,function: function,line: line,level:3)
 }
 
 ///En unexpected error occured
-public func QL4<T>(error: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QLogError<T>(error: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
     QLManager(error,file: file,function: function,line: line,level:4)
 }
 
