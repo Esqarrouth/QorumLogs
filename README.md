@@ -10,13 +10,13 @@ Swift Logging Utility in Xcode & Google Docs
 class MyAwesomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        QL1("Debug")
-        QL2("Info")
-        QL3("Warning")
+        QLogDebug("Debug")
+        QLogInfo("Info")
+        QLogWarning("Warning")
         awesomeFunction()
     }
     func awesomeFunction() {
-        QL4("Error")
+        QLogError("Error")
     }
 }
 ```
@@ -116,10 +116,10 @@ Sets the minimum log level that is seen in the debug area:
 ```swift
   QorumLogs.minimumLogLevelShown = 2
   QorumOnlineLogs.minimumLogLevelShown = 4 // Its a good idea to have OnlineLog level a bit higher
-  QL1("mylog") // Doesn't show this level anywhere, because minimum level is 2
-  QL2("mylog")  // Shows this only in debugger
-  QL3("mylog") // Shows this only in debugger
-  QL4("mylog") // Shows this in debugger and online logs
+  QLogDebug("mylog") // Doesn't show this level anywhere, because minimum level is 2
+  QLogInfo("mylog")  // Shows this only in debugger
+  QLogWarning("mylog") // Shows this only in debugger
+  QLogError("mylog") // Shows this in debugger and online logs
 ```
 QL methods can print in both Debugger and Google Docs, depending on which is active.
 
@@ -136,7 +136,7 @@ You do not need the extension of the file.
 ####Print Lines
 ```swift
   QLPlusLine()
-  QL2("Text between line")
+  QLogInfo("Text between line")
   QLShortLine()
 ```
 ![demo](http://i.imgur.com/hQWOYit.png)
@@ -162,7 +162,7 @@ For Mac and iOS/tvOS:
 ```
 
 ```swift
-    QL1("Mylog")
+    QLogDebug("Mylog")
 ```
 ![demo](http://i.imgur.com/yTmNnU6.png)
 
@@ -170,8 +170,8 @@ For Mac and iOS/tvOS:
 ```swift
    QorumOnlineLogs.extraInformation["userId"] = "sfkoFvvbKgr"
    QorumOnlineLogs.extraInformation["name"] = "Will Smith"
-   QL1("Will is awesome!")
-   QL5("Will rules!")
+   QLogDebug("Will is awesome!")
+   QLogError("Will rules!")
 ```
 ![demo](http://i.imgur.com/5xoVRrY.png)
 
