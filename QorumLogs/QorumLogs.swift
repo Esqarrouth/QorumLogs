@@ -10,11 +10,11 @@ import Foundation
 
 #if os(OSX)
     import Cocoa
-    
+
     public typealias QLColor = NSColor
 #elseif os(iOS) || os(tvOS)
     import UIKit
-    
+
     public typealias QLColor = UIColor
 #endif
 
@@ -32,13 +32,13 @@ private let kLogWarning : String = "Warning";
 private let kLogError : String = "Error";
 
 public struct QorumLogs {
-    
+
     /// While enabled QorumOnlineLogs does not work
     public static var enabled = false
-    
+
     /// 1 to 4
     public static var minimumLogLevelShown = 1
-    
+
     /// Change the array element with another UIColor. 0 is info gray, 5 is purple, rest are log levels
     public static var colorsForLogLevels: [QLColor] = [
         QLColor(redC: 120, greenC: 120, blueC: 120), //0
@@ -47,19 +47,19 @@ public struct QorumLogs {
         QLColor(redC: 255, greenC: 190, blueC: 0), //3
         QLColor(redC: 255, greenC: 0, blueC: 0),   //4
         QLColor(redC: 160, greenC: 32, blueC: 240)] //5
-    
+
     /// Enable console link with KZLinkedConsole plugin
     public static var KZLinkedConsoleSupportEnabled = false
     private static var showFiles = [String]()
-    
+
     //==========================================================================================================
     // MARK: - Public Methods
     //==========================================================================================================
-    
+
     /// Ignores all logs from other files
     public static func onlyShowTheseFiles(fileNames: Any...) {
         minimumLogLevelShown = 1
-        
+
         let showFiles = fileNames.map {fileName in
             return fileName as? String ?? {
                 let classString: String = {
@@ -70,20 +70,20 @@ public struct QorumLogs {
                         return String(fileName)
                     }
                 }()
-                
+
                 return classString
-            }()
+                }()
         }
-        
+
         self.showFiles = showFiles
         print(ColorLog.colorizeString("QorumLogs: Only Showing: \(showFiles)", colorId: 5))
     }
-    
+
     /// Ignores all logs from other files
     public static func onlyShowThisFile(fileName: Any) {
         onlyShowTheseFiles(fileName)
     }
-    
+
     /// Test to see if its working
     public static func test() {
         let oldDebugLevel = minimumLogLevelShown
@@ -94,11 +94,11 @@ public struct QorumLogs {
         QL4(kLogError)
         minimumLogLevelShown = oldDebugLevel
     }
-    
+
     //==========================================================================================================
     // MARK: - Private Methods
     //==========================================================================================================
-    
+
     private static func shouldPrintLine(level level: Int, fileName: String) -> Bool {
         if !QorumLogs.enabled {
             return false
@@ -108,7 +108,7 @@ public struct QorumLogs {
             return false
         }
     }
-    
+
     private static func shouldShowFile(fileName: String) -> Bool {
         return QorumLogs.showFiles.isEmpty || QorumLogs.showFiles.contains(fileName)
     }
@@ -127,7 +127,7 @@ private let kOnlineLogWarning : String = "3Warning";
 private let kOnlineLogError : String = "4Error";
 
 public struct QorumOnlineLogs {
-    
+
     private static let appVersion = versionAndBuild()
     private static var googleFormLink: String!
     private static var googleFormAppVersionField: String!
@@ -136,17 +136,17 @@ public struct QorumOnlineLogs {
     private static var googleFormErrorTextField: String!
     /// Online logs does not work while QorumLogs is enabled
     public static var enabled = false
-    
+
     /// 1 to 4
     public static var minimumLogLevelShown = 1
-    
+
     /// Empty dictionary, add extra info like user id, username here
     public static var extraInformation = [String: String]()
-    
+
     //==========================================================================================================
     // MARK: - Public Methods
     //==========================================================================================================
-    
+
     /// Test to see if its working
     public static func test() {
         let oldDebugLevel = minimumLogLevelShown
@@ -157,7 +157,7 @@ public struct QorumOnlineLogs {
         QL4(kLogError)
         minimumLogLevelShown = oldDebugLevel
     }
-    
+
     /// Setup Google Form links
     public static func setupOnlineLogs(formLink formLink: String, versionField: String, userInfoField: String, methodInfoField: String, textField: String) {
         googleFormLink = formLink
@@ -166,29 +166,29 @@ public struct QorumOnlineLogs {
         googleFormMethodInfoField = methodInfoField
         googleFormErrorTextField = textField
     }
-    
+
     //==========================================================================================================
     // MARK: - Private Methods
     //==========================================================================================================
-    
+
     private static func sendError<T>(classInformation classInformation: String, textObject: T, level: String) {
         var text = ""
         if let stringObject = textObject as? String {
             text = stringObject
         }
         let versionLevel = (appVersion + " - " + level)
-        
+
         let url = NSURL(string: googleFormLink)
         var postData = googleFormAppVersionField + "=" + versionLevel
         postData += "&" + googleFormUserInfoField + "=" + extraInformation.description
         postData += "&" + googleFormMethodInfoField + "=" + classInformation
         postData += "&" + googleFormErrorTextField + "=" + text
-        
+
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
-        
+
         #if os(OSX)
             if kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber10_10 {
                 let session = NSURLSession.sharedSession()
@@ -198,13 +198,13 @@ public struct QorumOnlineLogs {
                 NSURLConnection(request: request, delegate: nil)?.start()
             }
         #elseif os(iOS)
-            NSURLSession.sharedSession().dataTaskWithRequest(request);
+            NSURLSession.sharedSession().dataTaskWithRequest(request).resume();
         #endif
-        
+
         let printText = "OnlineLogs: \(extraInformation.description) - \(versionLevel) - \(classInformation) - \(text)"
         print(" \(ColorLog.colorizeString(printText, colorId: 5))\n", terminator: "")
     }
-    
+
     private static func shouldSendLine(level level: Int, fileName: String) -> Bool {
         if !QorumOnlineLogs.enabled {
             return false
@@ -218,22 +218,22 @@ public struct QorumOnlineLogs {
 
 
 ///Detailed logs only used while debugging
-public func QL1<T>(debug: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QL1<T>(debug: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
     QLManager(debug,file: file,function: function,line: line,level:1)
 }
 
 ///General information about app state
-public func QL2<T>(info: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QL2<T>(info: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
     QLManager(info,file: file,function: function,line: line,level:2)
 }
 
 ///Indicates possible error
-public func QL3<T>(warning: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QL3<T>(warning: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
     QLManager(warning,file: file,function: function,line: line,level:3)
 }
 
 ///En unexpected error occured
-public func QL4<T>(error: T, _ file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QL4<T>(error: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
     QLManager(error,file: file,function: function,line: line,level:4)
 }
 
@@ -245,22 +245,22 @@ private func printLog<T>(informationPart: String, text: T, level: Int) {
 }
 
 ///=====
-public func QLShortLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QLShortLine(file: String = #file, _ function: String = #function, _ line: Int = #line) {
     let lineString = "======================================"
     QLineManager(lineString, file: file, function: function, line: line)
 }
 
 ///+++++
-public func QLPlusLine(file: String = __FILE__, _ function: String = __FUNCTION__, _ line: Int = __LINE__) {
+public func QLPlusLine(file: String = #file, _ function: String = #function, _ line: Int = #line) {
     let lineString = "+++++++++++++++++++++++++++++++++++++"
     QLineManager(lineString, file: file, function: function, line: line)
 }
 
 ///Print data with level
 private func QLManager<T>(debug: T, file: String, function: String, line: Int, level : Int){
-    
+
     let levelText : String;
-    
+
     switch (level) {
     case 1:
         levelText = kOnlineLogDebug;
@@ -278,11 +278,11 @@ private func QLManager<T>(debug: T, file: String, function: String, line: Int, l
         levelText = kOnlineLogDebug;
         break;
     }
-    
-    
+
+
     let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
-    
+
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
         let informationPart: String
         if QorumLogs.KZLinkedConsoleSupportEnabled {
@@ -318,17 +318,17 @@ private struct ColorLog {
     private static let RESET_FG = ESCAPE + "fg;" // Clear any foreground color
     private static let RESET_BG = ESCAPE + "bg;" // Clear any background color
     private static let RESET = ESCAPE + ";"      // Clear any foreground or background color
-    
+
     static func colorizeString<T>(object: T, colorId: Int) -> String {
         return "\(ESCAPE)fg\(QorumLogs.colorsForLogLevels[colorId].redC),\(QorumLogs.colorsForLogLevels[colorId].greenC),\(QorumLogs.colorsForLogLevels[colorId].blueC);\(object)\(RESET)"
     }
 }
 
 private func versionAndBuild() -> String {
-    
+
     let version = NSBundle.mainBundle().infoDictionary? ["CFBundleShortVersionString"] as! String
     let build = NSBundle.mainBundle().infoDictionary? [kCFBundleVersionKey as String] as! String
-    
+
     return version == build ? "v\(version)" : "v\(version)(\(build))"
 }
 
