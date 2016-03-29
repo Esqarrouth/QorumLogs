@@ -198,7 +198,7 @@ public struct QorumOnlineLogs {
                 NSURLConnection(request: request, delegate: nil)?.start()
             }
         #elseif os(iOS)
-            NSURLSession.sharedSession().dataTaskWithRequest(request);
+            NSURLSession.sharedSession().dataTaskWithRequest(request).resume();
         #endif
 
         let printText = "OnlineLogs: \(extraInformation.description) - \(versionLevel) - \(classInformation) - \(text)"
