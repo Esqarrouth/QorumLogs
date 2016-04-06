@@ -12,6 +12,7 @@
 		E120F7581CB51BFD00AB45AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E120F7561CB51BFD00AB45AD /* Main.storyboard */; };
 		E120F75A1CB51BFD00AB45AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E120F7591CB51BFD00AB45AD /* Assets.xcassets */; };
 		E120F75D1CB51BFD00AB45AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E120F75B1CB51BFD00AB45AD /* LaunchScreen.storyboard */; };
+		E120F7651CB51C5400AB45AD /* QorumLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120F7641CB51C5400AB45AD /* QorumLogs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E120F7591CB51BFD00AB45AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E120F75C1CB51BFD00AB45AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E120F75E1CB51BFD00AB45AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E120F7641CB51C5400AB45AD /* QorumLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QorumLogs.swift; path = ../../QorumLogs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				E120F7521CB51BFD00AB45AD /* AppDelegate.swift */,
 				E120F7541CB51BFD00AB45AD /* ViewController.swift */,
+				E120F7641CB51C5400AB45AD /* QorumLogs.swift */,
 				E120F7561CB51BFD00AB45AD /* Main.storyboard */,
 				E120F7591CB51BFD00AB45AD /* Assets.xcassets */,
 				E120F75B1CB51BFD00AB45AD /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				E120F7551CB51BFD00AB45AD /* ViewController.swift in Sources */,
 				E120F7531CB51BFD00AB45AD /* AppDelegate.swift in Sources */,
+				E120F7651CB51C5400AB45AD /* QorumLogs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
