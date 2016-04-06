@@ -48,8 +48,6 @@ public struct QorumLogs {
         QLColor(redC: 255, greenC: 0, blueC: 0),   //4
         QLColor(redC: 160, greenC: 32, blueC: 240)] //5
 
-    /// Enable console link with KZLinkedConsole plugin
-    public static var KZLinkedConsoleSupportEnabled = false
     private static var showFiles = [String]()
 
     //==========================================================================================================
@@ -273,11 +271,7 @@ private func QLManager<T>(debug: T, file: String, function: String, line: Int, l
 
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
         let informationPart: String
-        if QorumLogs.KZLinkedConsoleSupportEnabled {
-            informationPart = "\(filename).\(fileExtension):\(line) \(function):"
-        } else {
-            informationPart = "\(filename).\(function)[\(line)]:"
-        }
+        informationPart = "\(filename).\(fileExtension):\(line) \(function):"
         printLog(informationPart, text: debug, level: level)
     } else if QorumOnlineLogs.shouldSendLine(level: level, fileName: filename) {
         let informationPart = "\(filename).\(function)[\(line)]"
@@ -291,11 +285,7 @@ private func QLineManager(lineString : String, file: String, function: String, l
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
         let informationPart: String
-        if QorumLogs.KZLinkedConsoleSupportEnabled {
-            informationPart = "\(filename).\(fileExtension):\(line) \(function):"
-        } else {
-            informationPart = "\(filename).\(function)[\(line)]:"
-        }
+        informationPart = "\(filename).\(fileExtension):\(line) \(function):"
         printLog(informationPart, text: lineString, level: 5)
     }
 }
