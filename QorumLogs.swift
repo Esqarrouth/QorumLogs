@@ -318,7 +318,7 @@ public class QLColor {
     var color: UIColor
     #endif
     
-    init(r: CGFloat, g: CGFloat, b: CGFloat) {
+    public init(r: CGFloat, g: CGFloat, b: CGFloat) {
         #if os(OSX)
             color = NSColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
         #elseif os(iOS) || os(tvOS)
@@ -326,7 +326,7 @@ public class QLColor {
         #endif
     }
     
-    convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    public convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         self.init(r: red * 255, g: green * 255, b: blue * 255)
     }
     
