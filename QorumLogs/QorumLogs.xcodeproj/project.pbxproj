@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9FA24F7C1CA28D3200B55441 /* QorumLogs.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FA24F7B1CA28D3200B55441 /* QorumLogs.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9FA24F841CA28D9F00B55441 /* QorumLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA24F831CA28D9F00B55441 /* QorumLogs.swift */; };
+		E120F7451CB519A400AB45AD /* QorumLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120F7441CB519A400AB45AD /* QorumLogs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9FA24F781CA28D3200B55441 /* QorumLogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QorumLogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FA24F7B1CA28D3200B55441 /* QorumLogs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QorumLogs.h; sourceTree = "<group>"; };
+		9FA24F7B1CA28D3200B55441 /* QorumLogs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QorumLogs.h; sourceTree = SOURCE_ROOT; };
 		9FA24F7D1CA28D3200B55441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FA24F831CA28D9F00B55441 /* QorumLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QorumLogs.swift; sourceTree = "<group>"; };
+		E120F7441CB519A400AB45AD /* QorumLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QorumLogs.swift; path = ../QorumLogs.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +48,8 @@
 		9FA24F7A1CA28D3200B55441 /* QorumLogs */ = {
 			isa = PBXGroup;
 			children = (
-				9FA24F831CA28D9F00B55441 /* QorumLogs.swift */,
 				9FA24F7B1CA28D3200B55441 /* QorumLogs.h */,
+				E120F7441CB519A400AB45AD /* QorumLogs.swift */,
 				9FA24F7D1CA28D3200B55441 /* Info.plist */,
 			);
 			path = QorumLogs;
@@ -74,8 +74,8 @@
 			buildConfigurationList = 9FA24F801CA28D3200B55441 /* Build configuration list for PBXNativeTarget "QorumLogs" */;
 			buildPhases = (
 				9FA24F731CA28D3200B55441 /* Sources */,
-				9FA24F741CA28D3200B55441 /* Frameworks */,
 				9FA24F751CA28D3200B55441 /* Headers */,
+				9FA24F741CA28D3200B55441 /* Frameworks */,
 				9FA24F761CA28D3200B55441 /* Resources */,
 			);
 			buildRules = (
@@ -93,6 +93,7 @@
 		9FA24F6F1CA28D3200B55441 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = goktugyil;
 				TargetAttributes = {
@@ -133,7 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FA24F841CA28D9F00B55441 /* QorumLogs.swift in Sources */,
+				E120F7451CB519A400AB45AD /* QorumLogs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +238,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = QorumLogs/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.goktugyil.QorumLogs;
@@ -255,7 +256,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = QorumLogs/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.goktugyil.QorumLogs;
