@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         QorumLogs.test()
         
         QLShortLine()
+//        customColors() //Uncomment to test custom colors
 //        setupOnlineLogs() //Uncomment to test it
         
         QL1("Show Debug")
@@ -28,6 +29,12 @@ class ViewController: UIViewController {
         QL4("Show Error")
     }
 
+    func customColors() {
+        //These colors are used by me in dark theme -goktugyil
+        QorumLogs.colorsForLogLevels[1] = QLColor(r: 0, g: 255, b: 255)
+        QorumLogs.colorsForLogLevels[2] = QLColor(r: 0, g: 255, b: 0)
+    }
+    
     func setupOnlineLogs() {
         QorumOnlineLogs.setupOnlineLogs(formLink: "https://docs.google.com/forms/d/19MbGnGA54cj9nobK5FxvRNcXJ-Gtudb_xSA3VChzSxU/formResponse", versionField: "entry_631576183", userInfoField: "entry_922538006", methodInfoField: "entry_836974774", textField: "entry_526236259")
         QorumLogs.enabled = false
@@ -39,7 +46,6 @@ class ViewController: UIViewController {
         //Results will be here:
         //https://docs.google.com/spreadsheets/d/1rYRStyI46L2sjiFF9DTDMlCb2qR2FMtKrZk3USRdXkA/
     }
-    
     
 }
 

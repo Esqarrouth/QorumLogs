@@ -10,12 +10,8 @@ import Foundation
 
 #if os(OSX)
     import Cocoa
-
-    public typealias QLColor = NSColor
 #elseif os(iOS) || os(tvOS)
     import UIKit
-
-    public typealias QLColor = UIColor
 #endif
 
 
@@ -41,12 +37,12 @@ public struct QorumLogs {
 
     /// Change the array element with another UIColor. 0 is info gray, 5 is purple, rest are log levels
     public static var colorsForLogLevels: [QLColor] = [
-        QLColor(redC: 120, greenC: 120, blueC: 120), //0
-        QLColor(redC: 0, greenC: 180, blueC: 180),  //1
-        QLColor(redC: 0, greenC: 150, blueC: 0),  //2
-        QLColor(redC: 255, greenC: 190, blueC: 0), //3
-        QLColor(redC: 255, greenC: 0, blueC: 0),   //4
-        QLColor(redC: 160, greenC: 32, blueC: 240)] //5
+        QLColor(r: 120, g: 120, b: 120), //0
+        QLColor(r: 0, g: 180, b: 180),  //1
+        QLColor(r: 0, g: 150, b: 0),  //2
+        QLColor(r: 255, g: 190, b: 0), //3
+        QLColor(r: 255, g: 0, b: 0),   //4
+        QLColor(r: 160, g: 32, b: 240)] //5
 
     private static var showFiles = [String]()
 
@@ -297,7 +293,7 @@ private struct ColorLog {
     private static let RESET = ESCAPE + ";"      // Clear any foreground or background color
 
     static func colorizeString<T>(object: T, colorId: Int) -> String {
-        return "\(ESCAPE)fg\(QorumLogs.colorsForLogLevels[colorId].redC),\(QorumLogs.colorsForLogLevels[colorId].greenC),\(QorumLogs.colorsForLogLevels[colorId].blueC);\(object)\(RESET)"
+        return "\(ESCAPE)fg\(QorumLogs.colorsForLogLevels[colorId].redColor),\(QorumLogs.colorsForLogLevels[colorId].greenColor),\(QorumLogs.colorsForLogLevels[colorId].blueColor);\(object)\(RESET)"
     }
 }
 
@@ -314,23 +310,46 @@ private extension String {
     var ns: NSString { return self as NSString }
 }
 
-private extension QLColor {
-    convenience init(redC: CGFloat, greenC: CGFloat, blueC: CGFloat) {
-        self.init(red: redC / 255.0, green: greenC / 255.0, blue: blueC / 255.0, alpha: 1)
+///Used in color settings for QorumLogs
+public class QLColor {
+    #if os(OSX)
+    var color: NSColor
+    #elseif os(iOS) || os(tvOS)
+    var color: UIColor
+    #endif
+    
+    init(r: CGFloat, g: CGFloat, b: CGFloat) {
+        #if os(OSX)
+            color = NSColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
+        #elseif os(iOS) || os(tvOS)
+            color = UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
+        #endif
     }
-    var redC: Int {
+    
+    convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        self.init(r: red * 255, g: green * 255, b: blue * 255)
+    }
+    
+    var redColor: Int {
         var r: CGFloat = 0
-        getRed(&r, green: nil, blue: nil, alpha: nil)
+        color.getRed(&r, green: nil, blue: nil, alpha: nil)
         return Int(r * 255)
     }
-    var greenC: Int {
+    
+    var greenColor: Int {
         var g: CGFloat = 0
-        getRed(nil, green: &g, blue: nil, alpha: nil)
+        color.getRed(nil, green: &g, blue: nil, alpha: nil)
         return Int(g * 255)
     }
-    var blueC: Int {
+    var blueColor: Int {
         var b: CGFloat = 0
-        getRed(nil, green: nil, blue: &b, alpha: nil)
+        color.getRed(nil, green: nil, blue: &b, alpha: nil)
         return Int(b * 255)
     }
+    
 }
+
+
+
+
+
