@@ -238,7 +238,6 @@ public func QL4<T>(error: T, _ file: String = #file, _ function: String = #funct
 }
 
 
-
 private func printLog<T>(informationPart: String, text: T, level: Int) {
     print(" \(ColorLog.colorizeString(informationPart, colorId: 0))", terminator: "")
     print(" \(ColorLog.colorizeString(text, colorId: level))\n", terminator: "")
@@ -262,23 +261,12 @@ private func QLManager<T>(debug: T, file: String, function: String, line: Int, l
     let levelText : String;
 
     switch (level) {
-    case 1:
-        levelText = kOnlineLogDebug;
-        break;
-    case 2:
-        levelText = kOnlineLogInfo;
-        break;
-    case 3:
-        levelText = kOnlineLogWarning;
-        break;
-    case 4:
-        levelText = kOnlineLogError;
-        break;
-    default:
-        levelText = kOnlineLogDebug;
-        break;
+    case 1: levelText = kOnlineLogDebug
+    case 2: levelText = kOnlineLogInfo
+    case 3: levelText = kOnlineLogWarning
+    case 4: levelText = kOnlineLogError
+    default: levelText = kOnlineLogDebug
     }
-
 
     let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
@@ -334,9 +322,7 @@ private func versionAndBuild() -> String {
 
 private extension String {
     /// Qorum Extension
-    var ns: NSString {
-        return self as NSString
-    }
+    var ns: NSString { return self as NSString }
 }
 
 private extension QLColor {
