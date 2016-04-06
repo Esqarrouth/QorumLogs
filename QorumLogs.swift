@@ -290,7 +290,6 @@ private func QLineManager(lineString : String, file: String, function: String, l
     let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
-        let lineString = "+++++++++++++++++++++++++++++++++++++"
         let informationPart: String
         if QorumLogs.KZLinkedConsoleSupportEnabled {
             informationPart = "\(filename).\(fileExtension):\(line) \(function):"
