@@ -23,6 +23,10 @@ class ViewController: UIViewController {
         QL2("Show Info")
         QL3("Show Warning")
         awesomeFunction()
+        
+        let label = UILabel(frame: CGRect(x: 100, y: 100, width: 300, height: 100))
+        label.text = "Check your console :)"
+        view.addSubview(label)
     }
     
     func awesomeFunction() {
