@@ -83,13 +83,21 @@ pod 'QorumLogs'
 
 (Cocoapods forces you to import the framework in every file. If anyone has a solution or workaround, inform me please)
 
+### Install via Carthage
+
+You can install `QorumLogs` via [Carthage](https://github.com/Carthage/Carthage) by adding the following line to your `Cartfile`:
+
+```
+github "goktugyil/QorumLogs"
+```
+
 ### Install Manually
 
 Download and drop 'QorumLogs.swift' in your project.
 
 ### Check Installation Works Correctly
-1. In your AppDelegate or anywhere else enter this: (If Cocoapods you must add `import QorumLogs`)
- 
+1. In your AppDelegate or anywhere else enter this: (If Cocoapods or Carthage you must add `import QorumLogs`)
+
   ```swift
   QorumLogs.enabled = true
   QorumLogs.test()
@@ -185,7 +193,7 @@ Unfortunately you can't just select the rows inside Google Docs and delete them.
 - Easily editable colors
 - Device information to Google Docs
 - Google Docs shows in exact order
-- Automaticly getting entry ids for Google Docs 
+- Automaticly getting entry ids for Google Docs
 - Pod support with QL methods written customly
 
 ##Thanks for making this possible
