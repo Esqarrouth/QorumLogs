@@ -1,7 +1,8 @@
 QorumLogs
 ==========
 
-[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/QorumLogs.svg)](https://img.shields.io/cocoapods/v/QorumLogs.svg)  
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/QorumLogs.svg)](https://img.shields.io/cocoapods/v/QorumLogs.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 Swift Logging Utility in Xcode & Google Docs
 
 ##Log Levels
