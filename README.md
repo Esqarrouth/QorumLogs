@@ -194,7 +194,7 @@ Unfortunately you can't just select the rows inside Google Docs and delete them.
 - Easily editable colors
 - Device information to Google Docs
 - Google Docs shows in exact order
-- Automaticly getting entry ids for Google Docs
+- Automatically getting entry ids for Google Docs
 - Pod support with QL methods written customly
 
 ##Thanks for making this possible
