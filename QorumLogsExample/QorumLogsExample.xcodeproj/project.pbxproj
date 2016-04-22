@@ -290,6 +290,7 @@
 				E120F7631CB51BFD00AB45AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

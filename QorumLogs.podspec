@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name            			= "QorumLogs"
-s.version          			= "0.7.1"
+s.version          			= "0.7.2"
 s.summary          			= "Swift Logging Utility for Xcode & Google Docs"
 s.description      			= "Swift Logging Utility for Xcode & Google Documents"
 s.homepage         			= "https://github.com/goktugyil/QorumLogs"
