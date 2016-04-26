@@ -169,6 +169,9 @@ public struct QorumOnlineLogs {
         var text = ""
         if let stringObject = textObject as? String {
             text = stringObject
+        } else {
+            let stringObject = String(textObject)
+            text = stringObject
         }
         let versionLevel = (appVersion + " - " + level)
 
