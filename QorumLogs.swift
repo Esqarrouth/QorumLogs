@@ -216,7 +216,7 @@ public struct QorumOnlineLogs {
 
 ///Detailed logs only used while debugging
 public func QL1<T>(debug: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
-    QLManager(debug,file: file,function: function,line: line,level:1)
+    QLManager(debug, file: file, function: function, line: line, level:1)
 }
 
 ///General information about app state
@@ -229,7 +229,7 @@ public func QL3<T>(warning: T, _ file: String = #file, _ function: String = #fun
     QLManager(warning,file: file,function: function,line: line,level:3)
 }
 
-///En unexpected error occured
+///An unexpected error occured
 public func QL4<T>(error: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
     QLManager(error,file: file,function: function,line: line,level:4)
 }
