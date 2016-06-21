@@ -19,6 +19,8 @@ class ViewController: UIViewController {
 //        customColors() //Uncomment to test custom colors
 //        setupOnlineLogs() //Uncomment to test it
         
+        QorumLogs.trackLogFunction = trackFunc
+        
         QL1("Show Debug")
         QL2("Show Info")
         QL3("Show Warning")
@@ -49,6 +51,10 @@ class ViewController: UIViewController {
         QL2("After this point its going to save to Google Docs")
         //Results will be here:
         //https://docs.google.com/spreadsheets/d/1rYRStyI46L2sjiFF9DTDMlCb2qR2FMtKrZk3USRdXkA/
+    }
+    
+    func trackFunc(log: String) {
+//       print("Tracking: " + log)
     }
     
 }

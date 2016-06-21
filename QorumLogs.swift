@@ -44,6 +44,10 @@ public struct QorumLogs {
         QLColor(r: 255, g: 0, b: 0),   //4
         QLColor(r: 160, g: 32, b: 240)] //5
 
+    //TODO: Show example in documentation
+    /// Set your function that will get called whenever something new is logged
+    public static var trackLogFunction: ((String)->())? = nil
+
     private static var showFiles = [String]()
 
     //==========================================================================================================
@@ -267,6 +271,15 @@ private func QLManager<T>(debug: T, file: String, function: String, line: Int, l
 
     let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
+    
+    var text = ""
+    if let stringObject = debug as? String {
+        text = stringObject
+    } else {
+        let stringObject = String(debug)
+        text = stringObject
+    }
+    QorumLogs.trackLogFunction?(text)
 
     if QorumLogs.shouldPrintLine(level: level, fileName: filename) {
         let informationPart: String
