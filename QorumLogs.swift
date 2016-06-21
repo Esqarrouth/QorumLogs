@@ -257,7 +257,7 @@ public func QLPlusLine(file: String = #file, _ function: String = #function, _ l
 }
 
 ///Print data with level
-private func QLManager<T>(debug: T, file: String, function: String, line: Int, level : Int){
+private func QLManager<T>(debug: T, file: String, function: String, line: Int, level : Int) {
 
     let levelText : String;
 
@@ -292,7 +292,7 @@ private func QLManager<T>(debug: T, file: String, function: String, line: Int, l
 }
 
 ///Print line
-private func QLineManager(lineString : String, file: String, function: String, line: Int){
+private func QLineManager(lineString : String, file: String, function: String, line: Int) {
     let fileExtension = file.ns.lastPathComponent.ns.pathExtension
     let filename = file.ns.lastPathComponent.ns.stringByDeletingPathExtension
     if QorumLogs.shouldPrintLine(level: 2, fileName: filename) {
