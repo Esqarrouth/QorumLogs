@@ -76,10 +76,13 @@ curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh 
 
 You can use [Cocoapods](http://cocoapods.org/) to install `QorumLogs` by adding it to your `Podfile`:
 ```ruby
-platform :ios, '8.0' // platform :tvos, '9.0' (for tvOS)
+platform :ios, '8.0' # platform :tvos, '9.0' (for tvOS)
 use_frameworks!
 
-pod 'QorumLogs'
+pod 'QorumLogs' #For Swift 3.0
+pod 'QorumLogs', :git => 'https://github.com/goktugyil/QorumLogs.git', :branch => 'Swift2.3' #For Swift 2.3
+pod 'QorumLogs', '~> 0.8' #For Swift 2.2
+
 ```
 
 (Cocoapods forces you to import the framework in every file. If anyone has a solution or workaround, inform me please)
