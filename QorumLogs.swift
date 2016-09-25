@@ -200,9 +200,7 @@ public struct QorumOnlineLogs {
 
         #if os(OSX)
             if kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber10_10 {
-                let session = NSURLSession.sharedSession()
-                let task = session.dataTaskWithRequest(request)
-                task.resume()
+                Foundation.URLSession.shared.dataTask(with: request).resume()
             } else {
                 NSURLConnection(request: request, delegate: nil)?.start()
             }
