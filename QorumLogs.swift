@@ -37,11 +37,11 @@ public struct QorumLogs {
 
     /// Change the array element with another UIColor. 0 is info gray, 5 is purple, rest are log levels
     public static var colorsForLogLevels: [QLColor] = [
-        QLColor(r: 120, g: 120, b: 120), //0
+        QLColor(r: 120, g: 120, b: 120),//0
         QLColor(r: 0, g: 180, b: 180),  //1
-        QLColor(r: 0, g: 150, b: 0),  //2
-        QLColor(r: 255, g: 190, b: 0), //3
-        QLColor(r: 255, g: 0, b: 0),   //4
+        QLColor(r: 0, g: 150, b: 0),    //2
+        QLColor(r: 255, g: 190, b: 0),  //3
+        QLColor(r: 255, g: 0, b: 0),    //4
         QLColor(r: 160, g: 32, b: 240)] //5
 
     /// Change the array element with another Emoji or String. 0 replaces gray color, 5 replaces purple, rest replace log levels
