@@ -72,8 +72,7 @@ curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh 
 4. In Xcode click Window > Package Manager, type in 'XcodeColors' in the search bar. Click Install.
 5. Restart Xcode after the installation
 
-### Install via Cocoa
-s
+### Install via Cocoapods
 
 You can use [Cocoapods](http://cocoapods.org/) to install `QorumLogs` by adding it to your `Podfile`:
 ```ruby
