@@ -80,6 +80,7 @@ platform :ios, '8.0' # platform :tvos, '9.0' (for tvOS)
 use_frameworks!
 
 pod 'QorumLogs' #Stable release for Swift 3.0
+
 pod 'QorumLogs', :git => 'https://github.com/goktugyil/QorumLogs.git' #Latest release for Swift 3.0
 pod 'QorumLogs', :git => 'https://github.com/goktugyil/QorumLogs.git', :branch => 'Swift2.3' #For Swift 2.3
 pod 'QorumLogs', '~> 0.8' #For Swift 2.2
