@@ -44,6 +44,15 @@ public struct QorumLogs {
         QLColor(r: 255, g: 0, b: 0),    //4
         QLColor(r: 160, g: 32, b: 240)] //5
 
+    /// Change the array element with another ansi color. 0 is info gray, 5 is purple, rest are log levels
+    public static var ansiColorsForLogLevels: [String] = [
+        "37m", // 0 (gray)
+        "34m", // 1 (blue)
+        "32m", // 2 (green)
+        "33m", // 3 (yellow)
+        "31m", // 4 (red)
+        "35m"] // 5 (magenta)
+
     /// Change the array element with another Emoji or String. 0 replaces gray color, 5 replaces purple, rest replace log levels
     public static var emojisForLogLevels: [String] = [
         "", //0
@@ -55,6 +64,9 @@ public struct QorumLogs {
     
     /// Uses emojis instead of colors when this is false
     public static var useColors = false
+
+    /// Uses ANSI colors instead of colors or emojis when this is true
+    public static var useAnsiColors = false
     
     //TODO: Show example in documentation
     /// Set your function that will get called whenever something new is logged
@@ -315,7 +327,9 @@ private struct ColorLog {
     private static let RESET = ESCAPE + ";"      // Clear any foreground or background color
 
     static func colorizeString<T>(_ object: T, colorId: Int) -> String {
-        if QorumLogs.useColors {
+        if QorumLogs.useAnsiColors {
+            return "\(ESCAPE)1m\(ESCAPE)\(QorumLogs.ansiColorsForLogLevels[colorId])\(object)"
+        } else if QorumLogs.useColors {
             return "\(ESCAPE)fg\(QorumLogs.colorsForLogLevels[colorId].redColor),\(QorumLogs.colorsForLogLevels[colorId].greenColor),\(QorumLogs.colorsForLogLevels[colorId].blueColor);\(object)\(RESET)"
         } else {
             return "\(QorumLogs.emojisForLogLevels[colorId])\(object)\(QorumLogs.emojisForLogLevels[colorId])"
