@@ -5,7 +5,7 @@ QorumLogs
 
 Swift Logging Utility in Xcode & Google Docs
 
-##Log Levels
+## Log Levels
 
 ```swift
 class MyAwesomeViewController: UIViewController {
@@ -26,15 +26,15 @@ class MyAwesomeViewController: UIViewController {
 ![demo](http://i.imgur.com/SzxTXyv.png)
 
 <br><br><br>
-##Works for both night mode and lightmode
+## Works for both night mode and lightmode
 
 ![demo](http://i.imgur.com/Zq4yUM6.png)
 <br><br><br>
-##Autocomplete Friendly: Type 2 Letters
+## Autocomplete Friendly: Type 2 Letters
 
 -![demo](http://i.imgur.com/3gPJHaY.gif)
 <br><br><br>
-##Filter File Specific Logs:
+## Filter File Specific Logs:
 Paste this where QorumLogs is initiliazed:
 ```swift
   QorumLogs.onlyShowThisFile(NewClass)
@@ -42,7 +42,7 @@ Paste this where QorumLogs is initiliazed:
 
 ![demo](http://i.imgur.com/K7OWqBw.gif)
 <br><br><br>
-##Google Docs Support:
+## Google Docs Support:
 
 In production, send all your logs to Google Docs with only 1 line of extra code.
 ```swift
@@ -52,12 +52,12 @@ In production, send all your logs to Google Docs with only 1 line of extra code.
 ![demo](http://i.imgur.com/TtYAHfW.png)
 
 <br><br><br>
-##Spot System Logs:
+## Spot System Logs:
 System logs are white (or black) after all, yours are not :)
 
 ![demo](http://i.imgur.com/rJKInKk.png)
 
-##Installation
+## Installation
 
 ### Prerequisites
 
@@ -114,12 +114,12 @@ Download and drop 'QorumLogs.swift' in your project.
 
 Congratulations!
 
-##Log Storage in GoogleDocs (Optional, ~4 minutes)
+## Log Storage in GoogleDocs (Optional, ~4 minutes)
 [Learn to integrate GoogleDocs](./Log To GoogleDocs.md)
 
-##Detailed Features:
+## Detailed Features:
 
-####Log Levels
+#### Log Levels
 
 Sets the minimum log level that is seen in the debug area:
 
@@ -137,7 +137,7 @@ Sets the minimum log level that is seen in the debug area:
 ```
 QL methods can print in both Debugger and Google Docs, depending on which is active.
 
-####Hide Other Classes
+#### Hide Other Classes
 
 You need to write the name of the actual file, you can do this by a string and also directly the class name can be appropriate if it is the same as the file name. Add the following code where you setup QorumLogs:
 ```swift
@@ -147,7 +147,7 @@ You need to write the name of the actual file, you can do this by a string and a
 
 You do not need the extension of the file.
 
-####Print Lines
+#### Print Lines
 ```swift
   QLPlusLine()
   QL2("Text between line")
@@ -155,7 +155,7 @@ You do not need the extension of the file.
 ```
 ![demo](http://i.imgur.com/hQWOYit.png)
 
-####Add Custom Colors
+#### Add Custom Colors
 
 Add custom colors for Mac, iOS, tvOS:
 ```swift
@@ -168,7 +168,7 @@ Add custom colors for Mac, iOS, tvOS:
 ```
 ![demo](http://i.imgur.com/yTmNnU6.png)
 
-####OnlineLogs - User Information
+#### OnlineLogs - User Information
 ```swift
    QorumOnlineLogs.extraInformation["userId"] = "sfkoFvvbKgr"
    QorumOnlineLogs.extraInformation["name"] = "Will Smith"
@@ -182,18 +182,18 @@ You only need to set the extraInformation one time.
 #### KZLinkedConsole support:
 KZLinkedConsole is a plugin for Xcode which add clickable link to place in code from log was printed. All you need to do is install it. For more information go to https://github.com/krzysztofzablocki/KZLinkedConsole  
 
-##FAQ
+## FAQ
 
 #### How to delete rows inside google docs?
 Unfortunately you can't just select the rows inside Google Docs and delete them. You need to select the rows where there are row numbers, then right click, then press delete click "Delete rows x-y" http://i.imgur.com/0XyAAbD.png
 
-##Requirements
+## Requirements
 
 - Xcode 6 or later (Tested on 6.4)
 - iOS 7 or later (Tested on 7.1)
 - tvOS 9 or later
 
-##Possible features
+## Possible features
 
 - Different colors for white and black Xcode themes
 - Easily editable colors
@@ -202,13 +202,13 @@ Unfortunately you can't just select the rows inside Google Docs and delete them.
 - Automatically getting entry ids for Google Docs
 - Pod support with QL methods written customly
 
-##Thanks for making this possible
+## Thanks for making this possible
 - [XcodeColors](https://github.com/robbiehanson/XcodeColors)
 - [Magic](https://github.com/ArtSabintsev/Magic)
 
 
-##License
+## License
 QorumLogs is available under the MIT license. See the [LICENSE file](https://github.com/goktugyil/QorumLogs/blob/master/LICENSE).
 
-##Keywords
+## Keywords
 Debugging, logging, remote logging, remote debugging, qorum app, swift log, library, framework, tool, google docs, google drive, google forms
