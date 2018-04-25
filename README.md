@@ -3,6 +3,12 @@ QorumLogs
 
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/QorumLogs.svg)](https://img.shields.io/cocoapods/v/QorumLogs.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
+<p>
+<a href="http://cocoapods.org/pods/QorumLogs"><img src="https://img.shields.io/cocoapods/at/QorumLogs.svg?label=Apps%20Using%20QorumLogs&colorB=28B9FE"></a>
+<a href="http://cocoapods.org/pods/QorumLogs"><img src="https://img.shields.io/cocoapods/dt/QorumLogs.svg?label=Total%20Downloads&colorB=28B9FE"></a>
+<a href="http://cocoapods.org/pods/QorumLogs"><img src="https://img.shields.io/cocoapods/dm/QorumLogs.svg?label=Downloads&colorB=28B9FE"></a>
+</p>
+
 Swift Logging Utility in Xcode & Google Docs
 
 ## Log Levels
